@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        Propriedades CSS: width (largura) e height (altura)
+
+        As propriedades width e height são utilizadas para definir a largura e a altura de um elemento HTML, respectivamente.
+        Elas podem ser definidas em diferentes unidades, como pixels (px), porcentagem (%), viewport width (vw), viewport height (vh), entre outras.
+
+        - px (pixels): valor fixo, independente do tamanho da tela.
+        - % (porcentagem): relativo ao elemento pai.
+        - vw (viewport width): relativo à largura da janela de visualização.
+        - vh (viewport height): relativo à altura da janela de visualização.
+
+        É importante lembrar que, ao definir apenas a largura ou altura, a outra dimensão pode ser ajustada automaticamente pelo conteúdo ou pelo CSS padrão do elemento.
+
+        Exemplos práticos abaixo:
+    -->
+
+    <style>
+        .exemplo1 {
+            width: 200px;
+            height: 100px;
+            background: #a2d5f2;
+            border: 2px solid #083d77;
+            margin-bottom: 20px;
+        }
+        .exemplo2 {
+            width: 50%;
+            height: 50px;
+            background: #ffb085;
+            border: 2px dashed #ff7c43;
+            margin-bottom: 20px;
+        }
+        .exemplo3 {
+            width: 100vw;
+            height: 30vh;
+            background: #b5ead7;
+            border: 2px dotted #36b37e;
+            margin-bottom: 20px;
+        }
+        .exemplo4 {
+            width: 150px;
+            /* altura não definida, será ajustada pelo conteúdo */
+            background: #f7d6e0;
+            border: 2px solid #c44536;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        .exemplo5 {
+            height: 80px;
+            /* largura não definida, será ajustada pelo conteúdo */
+            background: #e4bad4;
+            border: 2px solid #5e548e;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+    </style>
+    <title>Exemplo de width e height</title>
+</head>
+<body>
+    <h2>Exemplo 1: width e height em pixels</h2>
+    <div class="exemplo1">
+        width: 200px;<br>
+        height: 100px;
+    </div>
+
+    <h2>Exemplo 2: width em porcentagem e height em pixels</h2>
+    <div class="exemplo2">
+        width: 50%;<br>
+        height: 50px;
+    </div>
+
+    <h2>Exemplo 3: width em vw e height em vh</h2>
+    <div class="exemplo3">
+        width: 100vw;<br>
+        height: 30vh;
+    </div>
+
+    <h2>Exemplo 4: Apenas width definida</h2>
+    <div class="exemplo4">
+        width: 150px;<br>
+        (altura ajustada pelo conteúdo)
+    </div>
+
+    <h2>Exemplo 5: Apenas height definida</h2>
+    <div class="exemplo5">
+        height: 80px;<br>
+        (largura ajustada pelo conteúdo)
+    </div>
+</body>
+</html>

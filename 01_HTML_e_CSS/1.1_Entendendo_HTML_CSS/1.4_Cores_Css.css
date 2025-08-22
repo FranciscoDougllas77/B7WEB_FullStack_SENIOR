@@ -1,0 +1,44 @@
+/**
+ * Cores no CSS
+ * 
+ * No CSS, as cores podem ser definidas de várias formas para estilizar elementos HTML.
+ * As principais formas de declarar cores são:
+ * 
+ * 1. Nomes de cores:
+ *    Exemplos: red, blue, green, black, white, yellow, etc.
+ *    Exemplo de uso:
+ *      color: red;
+ *      background-color: yellow;
+ * 
+ * 2. Hexadecimal:
+ *    Utiliza o símbolo # seguido de 3 ou 6 dígitos.
+ *    Exemplo: #FF0000 (vermelho), #00FF00 (verde), #0000FF (azul)
+ *    Exemplo de uso:
+ *      color: #FF0000;
+ * 
+ * 3. RGB (Red, Green, Blue):
+ *    Define a cor usando valores de 0 a 255 para cada componente.
+ *    Exemplo: rgb(255, 0, 0) (vermelho)
+ *    Exemplo de uso:
+ *      background-color: rgb(0, 255, 0);
+ * 
+ * 4. RGBA (Red, Green, Blue, Alpha):
+ *    Igual ao RGB, mas com um canal alfa para transparência (0 a 1).
+ *    Exemplo: rgba(0, 0, 255, 0.5) (azul com 50% de opacidade)
+ *    Exemplo de uso:
+ *      color: rgba(0, 0, 255, 0.5);
+ * 
+ * 5. HSL (Hue, Saturation, Lightness):
+ *    Define a cor por matiz, saturação e luminosidade.
+ *    Exemplo: hsl(120, 100%, 50%) (verde)
+ *    Exemplo de uso:
+ *      background-color: hsl(240, 100%, 50%);
+ * 
+ * 6. HSLA (Hue, Saturation, Lightness, Alpha):
+ *    Igual ao HSL, mas com canal alfa para transparência.
+ *    Exemplo: hsla(60, 100%, 50%, 0.3)
+ *    Exemplo de uso:
+ *      color: hsla(60, 100%, 50%, 0.3);
+ * 
+ * Dica: Use ferramentas online para escolher e converter cores facilmente.
+ */
