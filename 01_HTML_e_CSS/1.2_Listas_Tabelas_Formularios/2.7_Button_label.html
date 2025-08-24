@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplos e explicações sobre Button, Label e Input em HTML
+    -->
+
+    <h2>Exemplo de &lt;input&gt; com &lt;label&gt; e &lt;button&gt;</h2>
+
+    <!-- Label associada ao input pelo atributo "for" -->
+    <label for="nome">Nome:</label>
+    <!-- Input de texto com id correspondente ao "for" do label -->
+    <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+
+    <br><br>
+
+    <!-- Botão para enviar o formulário ou executar uma ação -->
+    <button type="button" onclick="alert('Olá, ' + document.getElementById('nome').value + '!')">
+        Cumprimentar
+    </button>
+
+    <hr>
+
+    <h3>Explicação dos elementos:</h3>
+    <ul>
+        <li>
+            <strong>&lt;label&gt;:</strong> O elemento <code>&lt;label&gt;</code> é usado para definir um rótulo para um elemento de formulário, como <code>&lt;input&gt;</code>. O atributo <code>for</code> deve ser igual ao <code>id</code> do input correspondente, facilitando a acessibilidade e a usabilidade.
+        </li>
+        <li>
+            <strong>&lt;input&gt;:</strong> O elemento <code>&lt;input&gt;</code> permite ao usuário inserir dados. Existem vários tipos, como <code>text</code>, <code>password</code>, <code>email</code>, etc. No exemplo acima, usamos <code>type="text"</code> para entrada de texto.
+        </li>
+        <li>
+            <strong>&lt;button&gt;:</strong> O elemento <code>&lt;button&gt;</code> cria um botão clicável. Pode ser usado para enviar formulários (<code>type="submit"</code>) ou executar ações com JavaScript (<code>type="button"</code>).
+        </li>
+    </ul>
+
+    <!-- Exemplo de uso de label clicável para checkbox -->
+    <h2>Exemplo de Label com Checkbox</h2>
+    <label>
+        <input type="checkbox" name="aceito" id="aceito">
+        Eu aceito os termos e condições
+    </label>
+</body>
+</html>

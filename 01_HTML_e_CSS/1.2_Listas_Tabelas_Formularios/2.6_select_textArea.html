@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exemplos de Utilização do &lt;select&gt; e &lt;textarea&gt; em HTML</h1>
+
+    <h2>1. Elemento &lt;select&gt;</h2>
+    <p>
+        O elemento <code>&lt;select&gt;</code> é utilizado para criar uma lista suspensa (dropdown), permitindo ao usuário escolher uma opção entre várias disponíveis. Cada opção é definida com a tag <code>&lt;option&gt;</code>.
+    </p>
+
+    <form>
+        <label for="fruta">Escolha sua fruta favorita:</label>
+        <select id="fruta" name="fruta">
+            <option value="maçã">Maçã</option>
+            <option value="banana">Banana</option>
+            <option value="laranja">Laranja</option>
+            <option value="uva">Uva</option>
+        </select>
+        <br><br>
+
+        <label for="estado">Selecione seu estado:</label>
+        <select id="estado" name="estado">
+            <option value="">--Selecione--</option>
+            <option value="sp">São Paulo</option>
+            <option value="rj">Rio de Janeiro</option>
+            <option value="mg">Minas Gerais</option>
+            <option value="rs">Rio Grande do Sul</option>
+        </select>
+        <br><br>
+
+        <label for="linguagens">Linguagens que você conhece (múltipla escolha):</label>
+        <select id="linguagens" name="linguagens[]" multiple size="4">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+        </select>
+        <br><br>
+    </form>
+
+    <hr>
+
+    <h2>2. Elemento &lt;textarea&gt;</h2>
+    <p>
+        O elemento <code>&lt;textarea&gt;</code> é utilizado para criar campos de texto de múltiplas linhas, ideal para comentários, descrições ou mensagens longas.
+    </p>
+
+    <form>
+        <label for="comentario">Deixe seu comentário:</label><br>
+        <textarea id="comentario" name="comentario" rows="4" cols="50" placeholder="Digite seu comentário aqui..."></textarea>
+        <br><br>
+
+        <label for="descricao">Descrição do problema:</label><br>
+        <textarea id="descricao" name="descricao" rows="6" cols="60">Descreva detalhadamente o problema encontrado...</textarea>
+        <br><br>
+</form>
+</body>
+</html>

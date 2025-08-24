@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validações de Formulários HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.3);
+        }
+        
+        input:invalid {
+            border-color: #dc3545;
+        }
+        
+        input:valid {
+            border-color: #28a745;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .success-message {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .example-code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        .validation-type {
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>📝 Validações de Formulários HTML</h1>
+    <p>Este documento demonstra diferentes tipos de validações nativas do HTML5 para formulários.</p>
+
+    <!-- 1. VALIDAÇÕES BÁSICAS -->
+    <div class="container">
+        <h2>1. 🎯 Validações Básicas (HTML5 Nativo)</h2>
+        <p>O HTML5 oferece validações automáticas sem necessidade de JavaScript.</p>
+        
+        <form id="basicForm" novalidate>
+            <div class="form-group">
+                <label for="requiredField">Campo Obrigatório *</label>
+                <input type="text" id="requiredField" name="requiredField" required>
+                <div class="error-message">Este campo é obrigatório</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="emailField">Email</label>
+                <input type="email" id="emailField" name="emailField" required>
+                <div class="error-message">Digite um email válido</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="urlField">URL</label>
+                <input type="url" id="urlField" name="urlField">
+                <div class="error-message">Digite uma URL válida</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="numberField">Número (1-100)</label>
+                <input type="number" id="numberField" name="numberField" min="1" max="100">
+                <div class="error-message">Digite um número entre 1 e 100</div>
+            </div>
+            
+            <button type="submit">Enviar Formulário Básico</button>
+        </form>
+        
+        <div class="example-code">
+            <strong>Exemplo de código:</strong><br>
+            &lt;input type="email" required&gt; - Valida formato de email<br>
+            &lt;input type="number" min="1" max="100"&gt; - Valida intervalo numérico<br>
+            &lt;input type="url"&gt; - Valida formato de URL
+        </div>
+    </div>
+
+    <!-- 2. VALIDAÇÕES COM PATRÕES -->
+    <div class="container">
+        <h2>2. 🔍 Validações com Padrões (Pattern)</h2>
+        <p>Use o atributo <code>pattern</code> para validações personalizadas com expressões regulares.</p>
+        
+        <form id="patternForm">
+            <div class="form-group">
+                <label for="phoneField">Telefone (XX) XXXXX-XXXX</label>
+                <input type="tel" id="phoneField" name="phoneField" 
+                       pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}" 
+                       placeholder="(11) 99999-9999" required>
+                <div class="error-message">Formato: (XX) XXXXX-XXXX</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="cpfField">CPF (XXX.XXX.XXX-XX)</label>
+                <input type="text" id="cpfField" name="cpfField" 
+                       pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" 
+                       placeholder="123.456.789-00" required>
+                <div class="error-message">Formato: XXX.XXX.XXX-XX</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="cepField">CEP (XXXXX-XXX)</label>
+                <input type="text" id="cepField" name="cepField" 
+                       pattern="[0-9]{5}-[0-9]{3}" 
+                       placeholder="12345-678" required>
+                <div class="error-message">Formato: XXXXX-XXX</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="passwordField">Senha (mín. 8 chars, 1 maiúscula, 1 número)</label>
+                <input type="password" id="passwordField" name="passwordField" 
+                       pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$" 
+                       minlength="8" required>
+                <div class="error-message">Mínimo 8 caracteres, 1 maiúscula e 1 número</div>
+            </div>
+            
+            <button type="submit">Enviar Formulário com Padrões</button>
+        </form>
+        
+        <div class="example-code">
+            <strong>Padrões utilizados:</strong><br>
+            Telefone: \\([0-9]{2}\\) [0-9]{5}-[0-9]{4}<br>
+            CPF: [0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}<br>
+            CEP: [0-9]{5}-[0-9]{3}<br>
+            Senha: ^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$
+        </div>
+    </div>
+
+    <!-- 3. VALIDAÇÕES COM ATRIBUTOS ESPECÍFICOS -->
+    <div class="container">
+        <h2>3. ⚙️ Validações com Atributos Específicos</h2>
+        <p>HTML5 oferece atributos específicos para diferentes tipos de validação.</p>
+        
+        <form id="specificForm">
+            <div class="form-group">
+                <label for="ageField">Idade (18-120 anos)</label>
+                <input type="number" id="ageField" name="ageField" 
+                       min="18" max="120" step="1" required>
+                <div class="error-message">Idade deve ser entre 18 e 120 anos</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateField">Data de Nascimento</label>
+                <input type="date" id="dateField" name="dateField" 
+                       max="2006-12-31" required>
+                <div class="error-message">Data deve ser anterior a 2007</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="timeField">Horário de Preferência</label>
+                <input type="time" id="timeField" name="timeField" 
+                       min="08:00" max="18:00" required>
+                <div class="error-message">Horário deve ser entre 8h e 18h</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="fileField">Arquivo (máx. 5MB, apenas PDF)</label>
+                <input type="file" id="fileField" name="fileField" 
+                       accept=".pdf" max="5242880" required>
+                <div class="error-message">Apenas arquivos PDF até 5MB</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="rangeField">Nível de Satisfação (1-10)</label>
+                <input type="range" id="rangeField" name="rangeField" 
+                       min="1" max="10" step="1" value="5">
+                <span id="rangeValue">5</span>
+            </div>
+            
+            <button type="submit">Enviar Formulário Específico</button>
+        </form>
+        
+        <div class="example-code">
+            <strong>Atributos utilizados:</strong><br>
+            min/max: Define valores mínimo e máximo<br>
+            step: Define incremento para números<br>
+            accept: Define tipos de arquivo aceitos<br>
+            max: Para arquivos, define tamanho máximo em bytes
+        </div>
+    </div>
+
+    <!-- 4. VALIDAÇÕES COM JAVASCRIPT -->
+    <div class="container">
+        <h2>4. 🚀 Validações com JavaScript</h2>
+        <p>Validações personalizadas e em tempo real usando JavaScript.</p>
+        
+        <form id="jsForm" novalidate>
+            <div class="form-group">
+                <label for="usernameField">Nome de Usuário</label>
+                <input type="text" id="usernameField" name="usernameField" required>
+                <div class="error-message" id="usernameError"></div>
+                <div class="success-message" id="usernameSuccess"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPasswordField">Confirmar Senha</label>
+                <input type="password" id="confirmPasswordField" name="confirmPasswordField" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+                <div class="success-message" id="confirmPasswordSuccess"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="termsField">
+                    <input type="checkbox" id="termsField" name="termsField" required>
+                    Aceito os termos e condições
+                </label>
+                <div class="error-message" id="termsError"></div>
+            </div>
+            
+            <button type="submit">Enviar Formulário JavaScript</button>
+        </form>
+        
+        <div class="example-code">
+            <strong>Validações JavaScript:</strong><br>
+            • Nome de usuário: mínimo 3 caracteres, sem espaços<br>
+            • Confirmação de senha: deve ser igual à senha<br>
+            • Checkbox: deve ser marcado
+        </div>
+    </div>
+
+    <!-- 5. VALIDAÇÕES DE FORMULÁRIO COMPLETO -->
+    <div class="container">
+        <h2>5. 📋 Formulário Completo com Todas as Validações</h2>
+        <p>Exemplo prático de um formulário de cadastro com múltiplas validações.</p>
+        
+        <form id="completeForm" novalidate>
+            <h3>Dados Pessoais</h3>
+            
+            <div class="form-group">
+                <label for="fullName">Nome Completo *</label>
+                <input type="text" id="fullName" name="fullName" 
+                       minlength="3" maxlength="100" required>
+                <div class="error-message">Nome deve ter pelo menos 3 caracteres</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="completeEmail">Email *</label>
+                <input type="email" id="completeEmail" name="completeEmail" required>
+                <div class="error-message">Digite um email válido</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="completePhone">Telefone *</label>
+                <input type="tel" id="completePhone" name="completePhone" 
+                       pattern="\\([0-9]{2}\\) [0-9]{5}-[0-9]{4}" 
+                       placeholder="(11) 99999-9999" required>
+                <div class="error-message">Formato: (XX) XXXXX-XXXX</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="completeCpf">CPF *</label>
+                <input type="text" id="completeCpf" name="completeCpf" 
+                       pattern="[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}" 
+                       placeholder="123.456.789-00" required>
+                <div class="error-message">Formato: XXX.XXX.XXX-XX</div>
+            </div>
+            
+            <h3>Endereço</h3>
+            
+            <div class="form-group">
+                <label for="completeCep">CEP *</label>
+                <input type="text" id="completeCep" name="completeCep" 
+                       pattern="[0-9]{5}-[0-9]{3}" 
+                       placeholder="12345-678" required>
+                <div class="error-message">Formato: XXXXX-XXX</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="street">Rua *</label>
+                <input type="text" id="street" name="street" required>
+                <div class="error-message">Campo obrigatório</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="number">Número *</label>
+                <input type="number" id="number" name="number" min="1" required>
+                <div class="error-message">Número deve ser maior que 0</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="city">Cidade *</label>
+                <input type="text" id="city" name="city" required>
+                <div class="error-message">Campo obrigatório</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="state">Estado *</label>
+                <select id="state" name="state" required>
+                    <option value="">Selecione um estado</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+                <div class="error-message">Selecione um estado</div>
+            </div>
+            
+            <h3>Segurança</h3>
+            
+            <div class="form-group">
+                <label for="completePassword">Senha *</label>
+                <input type="password" id="completePassword" name="completePassword" 
+                       pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$" 
+                       minlength="8" required>
+                <div class="error-message">Mínimo 8 caracteres, 1 maiúscula e 1 número</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="completeConfirmPassword">Confirmar Senha *</label>
+                <input type="password" id="completeConfirmPassword" name="completeConfirmPassword" required>
+                <div class="error-message" id="completePasswordError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="completeTerms">
+                    <input type="checkbox" id="completeTerms" name="completeTerms" required>
+                    Aceito os <a href="#" target="_blank">termos e condições</a> *
+                </label>
+                <div class="error-message">Você deve aceitar os termos</div>
+            </div>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+
+    <!-- 6. DOCUMENTAÇÃO DAS VALIDAÇÕES -->
+    <div class="container">
+        <h2>6. 📚 Documentação das Validações</h2>
+        
+        <div class="validation-type">
+            <h3>Validações HTML5 Nativas</h3>
+            <ul>
+                <li><strong>required:</strong> Campo obrigatório</li>
+                <li><strong>type="email":</strong> Valida formato de email</li>
+                <li><strong>type="url":</strong> Valida formato de URL</li>
+                <li><strong>type="number":</strong> Aceita apenas números</li>
+                <li><strong>min/max:</strong> Define valores mínimo e máximo</li>
+                <li><strong>minlength/maxlength:</strong> Define comprimento mínimo/máximo</li>
+                <li><strong>pattern:</strong> Validação com expressão regular</li>
+                <li><strong>accept:</strong> Define tipos de arquivo aceitos</li>
+            </ul>
+        </div>
+        
+        <div class="validation-type">
+            <h3>Tipos de Input com Validação Automática</h3>
+            <ul>
+                <li><strong>email:</strong> Valida formato de email</li>
+                <li><strong>url:</strong> Valida formato de URL</li>
+                <li><strong>tel:</strong> Para números de telefone</li>
+                <li><strong>date:</strong> Para datas</li>
+                <li><strong>time:</strong> Para horários</li>
+                <li><strong>datetime-local:</strong> Para data e hora</li>
+                <li><strong>month:</strong> Para mês e ano</li>
+                <li><strong>week:</strong> Para semana</li>
+                <li><strong>color:</strong> Para seleção de cor</li>
+                <li><strong>range:</strong> Para valores em intervalo</li>
+            </ul>
+        </div>
+        
+        <div class="validation-type">
+            <h3>Expressões Regulares Comuns</h3>
+            <ul>
+                <li><strong>Telefone BR:</strong> \\([0-9]{2}\\) [0-9]{5}-[0-9]{4}</li>
+                <li><strong>CPF:</strong> [0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}</li>
+                <li><strong>CEP:</strong> [0-9]{5}-[0-9]{3}</li>
+                <li><strong>CNPJ:</strong> [0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}</li>
+                <li><strong>Senha forte:</strong> ^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$</li>
+                <li><strong>Data BR:</strong> [0-9]{2}/[0-9]{2}/[0-9]{4}</li>
+            </ul>
+        </div>
+        
+        <div class="validation-type">
+            <h3>Boas Práticas</h3>
+            <ul>
+                <li>Sempre use <strong>novalidate</strong> quando implementar validações JavaScript</li>
+                <li>Forneça mensagens de erro claras e específicas</li>
+                <li>Valide em tempo real quando possível</li>
+                <li>Use validações do lado do servidor como backup</li>
+                <li>Teste em diferentes navegadores</li>
+                <li>Considere acessibilidade (ARIA labels, mensagens de erro)</li>
+                <li>Mantenha validações simples e intuitivas</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Validação do campo de usuário em tempo real
+        document.getElementById('usernameField').addEventListener('input', function() {
+            const username = this.value;
+            const errorDiv = document.getElementById('usernameError');
+            const successDiv = document.getElementById('usernameSuccess');
+            
+            if (username.length < 3) {
+                errorDiv.textContent = 'Nome de usuário deve ter pelo menos 3 caracteres';
+                successDiv.textContent = '';
+                this.setCustomValidity('Nome de usuário deve ter pelo menos 3 caracteres');
+            } else if (username.includes(' ')) {
+                errorDiv.textContent = 'Nome de usuário não pode conter espaços';
+                successDiv.textContent = '';
+                this.setCustomValidity('Nome de usuário não pode conter espaços');
+            } else {
+                errorDiv.textContent = '';
+                successDiv.textContent = 'Nome de usuário válido!';
+                this.setCustomValidity('');
+            }
+        });
+
+        // Validação de confirmação de senha
+        document.getElementById('confirmPasswordField').addEventListener('input', function() {
+            const password = document.getElementById('passwordField').value;
+            const confirmPassword = this.value;
+            const errorDiv = document.getElementById('confirmPasswordError');
+            const successDiv = document.getElementById('confirmPasswordSuccess');
+            
+            if (password !== confirmPassword) {
+                errorDiv.textContent = 'As senhas não coincidem';
+                successDiv.textContent = '';
+                this.setCustomValidity('As senhas não coincidem');
+            } else {
+                errorDiv.textContent = '';
+                successDiv.textContent = 'Senhas coincidem!';
+                this.setCustomValidity('');
+            }
+        });
+
+        // Validação de confirmação de senha no formulário completo
+        document.getElementById('completeConfirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('completePassword').value;
+            const confirmPassword = this.value;
+            const errorDiv = document.getElementById('completePasswordError');
+            
+            if (password !== confirmPassword) {
+                errorDiv.textContent = 'As senhas não coincidem';
+                this.setCustomValidity('As senhas não coincidem');
+            } else {
+                errorDiv.textContent = '';
+                this.setCustomValidity('');
+            }
+        });
+
+        // Atualizar valor do range
+        document.getElementById('rangeField').addEventListener('input', function() {
+            document.getElementById('rangeValue').textContent = this.value;
+        });
+
+        // Prevenir envio de formulários com erros
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                if (!this.checkValidity()) {
+                    e.preventDefault();
+                    alert('Por favor, corrija os erros no formulário antes de enviar.');
+                }
+            });
+        });
+
+        // Exibir mensagens de validação personalizadas
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+            field.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.focus();
+            });
+        });
+    </script>
+</body>
+</html>

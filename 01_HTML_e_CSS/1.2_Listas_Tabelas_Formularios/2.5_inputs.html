@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tipos de Inputs em HTML</h1>
+
+    <p>O elemento <code>&lt;input&gt;</code> em HTML pode ser utilizado de diversas formas, dependendo do valor do atributo <code>type</code>. Abaixo estão exemplos e explicações para cada tipo de input:</p>
+
+    <h2>1. <code>type="text"</code></h2>
+    <p>Campo de texto simples para entrada de uma linha.</p>
+    <input type="text" placeholder="Digite seu nome">
+
+    <h2>2. <code>type="password"</code></h2>
+    <p>Campo para senha, oculta os caracteres digitados.</p>
+    <input type="password" placeholder="Digite sua senha">
+
+    <h2>3. <code>type="email"</code></h2>
+    <p>Campo para e-mail, valida o formato do e-mail.</p>
+    <input type="email" placeholder="exemplo@email.com">
+
+    <h2>4. <code>type="number"</code></h2>
+    <p>Campo para números, permite apenas valores numéricos.</p>
+    <input type="number" min="1" max="10" placeholder="Digite um número">
+
+    <h2>5. <code>type="tel"</code></h2>
+    <p>Campo para telefone, pode exibir teclado numérico em dispositivos móveis.</p>
+    <input type="tel" placeholder="(99) 99999-9999">
+
+    <h2>6. <code>type="url"</code></h2>
+    <p>Campo para URLs, valida se o valor inserido é um endereço web.</p>
+    <input type="url" placeholder="https://www.exemplo.com">
+
+    <h2>7. <code>type="search"</code></h2>
+    <p>Campo para buscas, pode exibir um botão de limpar em alguns navegadores.</p>
+    <input type="search" placeholder="Pesquisar...">
+
+    <h2>8. <code>type="date"</code></h2>
+    <p>Campo para seleção de data.</p>
+    <input type="date">
+
+    <h2>9. <code>type="time"</code></h2>
+    <p>Campo para seleção de horário.</p>
+    <input type="time">
+
+    <h2>10. <code>type="datetime-local"</code></h2>
+    <p>Campo para data e hora (sem fuso horário).</p>
+    <input type="datetime-local">
+
+    <h2>11. <code>type="month"</code></h2>
+    <p>Campo para seleção de mês e ano.</p>
+    <input type="month">
+
+    <h2>12. <code>type="week"</code></h2>
+    <p>Campo para seleção de semana do ano.</p>
+    <input type="week">
+
+    <h2>13. <code>type="color"</code></h2>
+    <p>Campo para seleção de cor.</p>
+    <input type="color">
+
+    <h2>14. <code>type="checkbox"</code></h2>
+    <p>Caixa de seleção (pode marcar mais de uma opção).</p>
+    <label><input type="checkbox" name="interesse" value="html"> HTML</label>
+    <label><input type="checkbox" name="interesse" value="css"> CSS</label>
+
+    <h2>15. <code>type="radio"</code></h2>
+    <p>Botão de opção (apenas uma opção pode ser selecionada por grupo).</p>
+    <label><input type="radio" name="genero" value="masculino"> Masculino</label>
+    <label><input type="radio" name="genero" value="feminino"> Feminino</label>
+
+    <h2>16. <code>type="file"</code></h2>
+    <p>Campo para envio de arquivos.</p>
+    <input type="file" multiple>
+
+    <h2>17. <code>type="range"</code></h2>
+    <p>Controle deslizante para selecionar um valor dentro de um intervalo.</p>
+    <input type="range" min="0" max="100" value="50">
+
+    <h2>18. <code>type="hidden"</code></h2>
+    <p>Campo oculto, não é exibido ao usuário, mas pode enviar valores no formulário.</p>
+    <input type="hidden" name="usuario_id" value="12345">
+
+    <h2>19. <code>type="submit"</code></h2>
+    <p>Botão para enviar o formulário.</p>
+    <input type="submit" value="Enviar">
+
+    <h2>20. <code>type="reset"</code></h2>
+    <p>Botão para limpar todos os campos do formulário.</p>
+    <input type="reset" value="Limpar">
+
+    <h2>21. <code>type="button"</code></h2>
+    <p>Botão genérico, pode ser usado com JavaScript.</p>
+    <input type="button" value="Clique aqui" onclick="alert('Botão clicado!')">
+
+    <hr>
+    <h2>Exemplo de Formulário com Diversos Inputs</h2>
+    <form>
+        <label>Nome: <input type="text" name="nome"></label><br><br>
+        <label>Email: <input type="email" name="email"></label><br><br>
+        <label>Senha: <input type="password" name="senha"></label><br><br>
+        <label>Idade: <input type="number" name="idade"></label><br><br>
+        <label>Cor favorita: <input type="color" name="cor"></label><br><br>
+        <label>Data de nascimento: <input type="date" name="nascimento"></label><br><br>
+        <label>Foto de perfil: <input type="file" name="foto"></label><br><br>
+        <label>Notificações: <input type="checkbox" name="notificacoes"></label><br><br>
+        <input type="submit" value="Cadastrar">
+        <input type="reset" value="Limpar">
+    </form>
+</body>
+</html>

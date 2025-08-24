@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Estilizado com CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .form-header h1 {
+                font-size: 2em;
+            }
+            
+            .checkbox-group,
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-header">
+            <h1>Cadastro</h1>
+            <p>Preencha os dados abaixo para se cadastrar</p>
+        </div>
+
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="nome">Nome Completo <span class="required">*</span></label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha <span class="required">*</span></label>
+                <input type="password" id="senha" name="senha" required placeholder="Mínimo 6 caracteres">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmar-senha">Confirmar Senha <span class="required">*</span></label>
+                <input type="password" id="confirmar-senha" name="confirmar-senha" required placeholder="Confirme sua senha">
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+            </div>
+
+            <div class="form-group">
+                <label for="data-nascimento">Data de Nascimento</label>
+                <input type="date" id="data-nascimento" name="data-nascimento">
+            </div>
+
+            <div class="form-group">
+                <label for="genero">Gênero</label>
+                <select id="genero" name="genero">
+                    <option value="">Selecione uma opção</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                    <option value="prefiro-nao-dizer">Prefiro não dizer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Interesses</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tecnologia" name="interesses" value="tecnologia">
+                        <label for="tecnologia">Tecnologia</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="esportes" name="interesses" value="esportes">
+                        <label for="esportes">Esportes</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="musica" name="interesses" value="musica">
+                        <label for="musica">Música</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="viagem" name="interesses" value="viagem">
+                        <label for="viagem">Viagem</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nível de Experiência</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" id="iniciante" name="experiencia" value="iniciante">
+                        <label for="iniciante">Iniciante</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="intermediario" name="experiencia" value="intermediario">
+                        <label for="intermediario">Intermediário</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="avancado" name="experiencia" value="avancado">
+                        <label for="avancado">Avançado</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" placeholder="Digite uma mensagem (opcional)"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Cadastrar</button>
+        </form>
+
+        <div class="form-footer">
+            <p>Já tem uma conta? <a href="#" style="color: #667eea; text-decoration: none;">Faça login</a></p>
+        </div>
+    </div>
+</body>
+</html>
