@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Descrição e Citações</title>
+    <style>
+        .container { display: grid; gap: 20px; }
+        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .card { padding: 16px; background: #f5f5f5; border: 1px solid #ddd; }
+        .title { margin: 0 0 8px; font: 700 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .desc { margin: 0 0 12px; color: #374151; font: 400 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        dl { margin: 0; }
+        dt { font-weight: 700; }
+        dd { margin: 0 0 10px 0; }
+        blockquote { margin: 0; padding: 12px 14px; background: #fff; border-left: 4px solid #9ca3af; }
+        blockquote footer { margin-top: 8px; color: #6b7280; font-size: 13px; }
+        .inline { background: #fff; border: 1px solid #ccc; padding: 10px; }
+        cite { font-style: normal; color: #374151; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <h1 class="title">Lista de Descrição (dl, dt, dd)</h1>
+            <p class="desc">Use <code>dl</code> para listas de termos e definições. <code>dt</code> é o termo; <code>dd</code> é a descrição.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">Exemplo básico</p>
+                    <dl>
+                        <dt>HTML</dt>
+                        <dd>Linguagem de marcação para estruturar conteúdo na web.</dd>
+                        <dt>CSS</dt>
+                        <dd>Camadas de estilo para apresentação visual do conteúdo.</dd>
+                        <dt>JavaScript</dt>
+                        <dd>Linguagem de programação para comportamento e interatividade.</dd>
+                    </dl>
+                </div>
+                <div class="card">
+                    <p class="title">Múltiplas descrições por termo</p>
+                    <dl>
+                        <dt>Acessibilidade</dt>
+                        <dd>Facilitar o uso por pessoas com diferentes necessidades.</dd>
+                        <dd>Adequar semântica, contraste e navegação por teclado.</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1 class="title">Citações (blockquote, q, cite)</h1>
+            <p class="desc"><code>blockquote</code> é usado para citações em bloco e pode ter a origem em <code>cite</code>. <code>q</code> é uma citação curta inline. O elemento <code>cite</code> marca o título/autor da obra.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">blockquote com fonte</p>
+                    <blockquote cite="https://www.w3.org/TR/html52/grouping-content.html#the-blockquote-element">
+                        A semântica correta melhora a acessibilidade, SEO e manutenção do código.
+                        <footer>— <cite>W3C HTML Specification</cite></footer>
+                    </blockquote>
+                </div>
+                <div class="card">
+                    <p class="title">q (inline)</p>
+                    <div class="inline">
+                        Como diria o guia, <q>não entre em pânico</q>.
+                    </div>
+                </div>
+                <div class="card">
+                    <p class="title">Uso de cite</p>
+                    <p>Trecho extraído de <cite>Designing with Web Standards</cite>.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

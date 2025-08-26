@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main, address e figure</title>
+    <style>
+        .container { display: grid; gap: 20px; }
+        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .card { padding: 16px; background: #f5f5f5; border: 1px solid #ddd; }
+        .title { margin: 0 0 8px; font: 700 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .desc { margin: 0 0 12px; color: #374151; font: 400 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .demo { background: #fff; border: 1px solid #ccc; padding: 12px; }
+        address { font-style: normal; line-height: 1.5; color: #111827; }
+        address a { color: #1d4ed8; text-decoration: none; }
+        address a:hover { text-decoration: underline; }
+        figure { margin: 0; }
+        figcaption { color: #6b7280; font-size: 13px; margin-top: 8px; }
+        .img-box { width: 100%; height: 140px; background: linear-gradient(135deg, #4f46e5, #22d3ee); border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <h1 class="title">main</h1>
+            <p class="desc">Conteúdo principal único da página. Deve existir no máximo um por documento.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">Exemplo</p>
+                    <div class="demo">
+<main>
+    <h2>Artigo em destaque</h2>
+    <p>Este é o conteúdo principal da página, diretamente relacionado ao objetivo do documento.</p>
+</main>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1 class="title">address</h1>
+            <p class="desc">Informações de contato do autor ou organização. Não é para endereços arbitrários de páginas.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">Exemplo</p>
+                    <div class="demo">
+<address>
+    Site da Empresa XYZ<br>
+    Rua das Flores, 123 - São Paulo, SP<br>
+    <a href="mailto:contato@empresa.xyz">contato@empresa.xyz</a><br>
+    <a href="tel:+5511999999999">+55 (11) 99999-9999</a>
+</address>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1 class="title">figure e figcaption</h1>
+            <p class="desc">Agrupa conteúdo ilustrativo (imagem, gráfico, código) com legenda opcional em <code>figcaption</code>.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">Exemplo</p>
+                    <div class="demo">
+<figure>
+    <div class="img-box" role="img" aria-label="Imagem ilustrativa em degradê"></div>
+    <figcaption>Figura 1 — Imagem ilustrativa com degradê.</figcaption>
+</figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

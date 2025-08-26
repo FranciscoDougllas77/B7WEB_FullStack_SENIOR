@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos: placeholder e autofocus</title>
+    <style>
+        :root{
+            --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --line:#1f2937; --card:#111827; --brand:#38bdf8;
+        }
+        *{ box-sizing:border-box; }
+        body{
+            margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background:var(--bg); color:var(--fg); line-height:1.5;
+        }
+        header{ padding:16px; border-bottom:1px solid var(--line); }
+        header h1{ margin:0 0 4px; font-size:1.25rem; }
+        header p{ margin:0; color:var(--muted); }
+        .container{ max-width: 800px; margin:0 auto; padding:16px; }
+
+        form{ display:grid; gap:16px; background:var(--card); border:1px solid var(--line); padding:16px; border-radius:10px; }
+        .control{ display:grid; gap:6px; }
+        label{ color:var(--fg); }
+        input, textarea{
+            width:100%; background:#0b1220; color:var(--fg); border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+        }
+        input::placeholder, textarea::placeholder{ color: var(--muted); opacity:1; }
+        /* placeholder em foco com cor distinta */
+        input:focus::placeholder, textarea:focus::placeholder{ color:#66d9ff; }
+        /* placeholder de erro (exemplo) */
+        .error::placeholder{ color:#fca5a5; }
+
+        .row{ display:grid; gap:12px; grid-template-columns:1fr; }
+        @media screen and (min-width:720px){ .row{ grid-template-columns: repeat(2, 1fr); } }
+
+        .hint{ color:var(--muted); font-size:0.95rem; }
+        .actions{ display:flex; gap:12px; }
+        button{ background:var(--brand); color:#081420; border:0; border-radius:8px; padding:10px 14px; cursor:pointer; }
+        button.secondary{ background:transparent; color:var(--fg); border:1px solid var(--line); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Placeholder e Autofocus</h1>
+            <p>Campos com texto de dica e foco automático no primeiro campo.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <form action="#" method="post">
+            <div class="row">
+                <div class="control">
+                    <label for="nome">Nome (autofocus)</label>
+                    <input id="nome" name="nome" type="text" placeholder="Digite seu nome completo" autofocus />
+                    <small class="hint">O foco inicia aqui ao carregar a página.</small>
+                </div>
+                <div class="control">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="voce@exemplo.com" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="control">
+                    <label for="busca">Busca</label>
+                    <input id="busca" name="busca" type="search" placeholder="Pesquisar por termos..." />
+                </div>
+                <div class="control">
+                    <label for="telefone">Telefone (placeholder com erro)</label>
+                    <input id="telefone" name="telefone" type="tel" class="error" placeholder="Formato inválido — tente (11) 99999-9999" />
+                </div>
+            </div>
+
+            <div class="control">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem..."></textarea>
+            </div>
+
+            <div class="actions">
+                <button type="submit">Enviar</button>
+                <button type="reset" class="secondary">Limpar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

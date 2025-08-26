@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo: header, nav e footer</title>
+    <style>
+        :root{
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --line: #1f2937;
+            --brand: #38bdf8;
+            --card: #111827;
+            --radius: 10px;
+        }
+
+        *{ box-sizing: border-box; }
+
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+        }
+
+        .skip-link{
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+        .skip-link:focus{
+            left: 16px;
+            top: 16px;
+            width: auto;
+            height: auto;
+            background: #0b1220;
+            border: 1px solid var(--line);
+            color: var(--fg);
+            padding: 6px 10px;
+            border-radius: 999px;
+        }
+
+        header{
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(0deg, rgba(56,189,248,0.08), transparent 60%);
+        }
+        .container{ max-width: 1100px; margin: 0 auto; padding: 16px; }
+        .brand{ display: flex; align-items: center; gap: 10px; }
+        .brand-logo{ width: 28px; height: 28px; border-radius: 6px; background: var(--brand); box-shadow: 0 0 0 3px rgba(56,189,248,0.25); }
+        .brand-name{ margin: 0; font-size: 1.125rem; }
+
+        nav[aria-label]{
+            margin-top: 10px;
+            display: flex; flex-wrap: wrap; gap: 8px;
+        }
+        nav a{
+            text-decoration: none;
+            color: var(--fg);
+            background: #0b1220;
+            border: 1px solid var(--line);
+            padding: 8px 12px;
+            border-radius: 999px;
+        }
+        nav a[aria-current="page"]{
+            outline: 2px solid var(--brand);
+        }
+
+        main{ padding: 16px; }
+        .content{ max-width: 900px; margin: 0 auto; display: grid; gap: 12px; }
+        .card{ background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+        .card h2{ margin-top: 0; color: var(--brand); }
+        .lead{ color: var(--muted); margin: 0; }
+
+        footer{
+            margin-top: 24px;
+            border-top: 1px solid var(--line);
+            padding: 16px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        @media screen and (min-width: 800px){
+            header .container{ display: grid; grid-template-columns: 1fr auto; align-items: center; }
+            nav[aria-label]{ margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+    <header>
+        <div class="container">
+            <div class="brand" role="banner">
+                <div class="brand-logo" aria-hidden="true"></div>
+                <h1 class="brand-name">Meu Site Semântico</h1>
+            </div>
+            <nav aria-label="Navegação principal">
+                <a href="#" aria-current="page">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#blog">Blog</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="conteudo" tabindex="-1">
+        <div class="content">
+            <article class="card" id="servicos">
+                <h2>Serviços</h2>
+                <p class="lead">Estrutura semântica com <code>header</code>, <code>nav</code> e <code>footer</code>.</p>
+                <p>Este bloco demonstra como separar cabeçalho, navegação e rodapé mantendo acessibilidade e responsividade.</p>
+            </article>
+            <article class="card" id="blog">
+                <h2>Blog</h2>
+                <p class="lead">Links de navegação usam <code>aria-current</code> para indicar a página atual.</p>
+                <p>Em telas maiores, usamos grid no cabeçalho para alinhar marca e navegação lado a lado.</p>
+            </article>
+            <article class="card" id="contato">
+                <h2>Contato</h2>
+                <p class="lead">O link “pular para conteúdo” melhora a navegação por teclado.</p>
+                <p>Você pode expandir este exemplo com menus dropdown e navegação móvel colapsável.</p>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <small>&copy; 2025 Meu Site Semântico. Todos os direitos reservados.</small>
+    </footer>
+</body>
+</html>

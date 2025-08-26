@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo @media screen (Mobile-first)</title>
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --primary: #38bdf8;
+            --card: #111827;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+        }
+
+        header {
+            padding: 16px;
+            border-bottom: 1px solid #1f2937;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 1.25rem; /* mobile */
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--fg);
+            background: #0b1220;
+            border: 1px solid #1f2937;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .container {
+            padding: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr; /* mobile: 1 coluna */
+            gap: 12px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid #1f2937;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        aside {
+            background: #0b1220;
+            border: 1px dashed #1f2937;
+            border-radius: 10px;
+            padding: 16px;
+            color: var(--muted);
+        }
+
+        footer {
+            padding: 16px;
+            border-top: 1px solid #1f2937;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        /* Breakpoint 1: >= 600px (tablets) */
+        @media screen and (min-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+                gap: 16px;
+            }
+            nav a { padding: 10px 14px; }
+        }
+
+        /* Breakpoint 2: >= 900px (desktops) */
+        @media screen and (min-width: 900px) {
+            header h1 { font-size: 1.75rem; }
+            .layout {
+                display: grid;
+                grid-template-columns: 2fr 1fr; /* conteúdo + sidebar */
+                gap: 20px;
+                align-items: start;
+            }
+            .grid { grid-template-columns: repeat(3, 1fr); /* 3 colunas */ }
+            aside { position: sticky; top: 16px; }
+        }
+
+        /* Exemplo de regra específica para telas pequenas (opcional) */
+        @media screen and (max-width: 359px) {
+            header h1 { font-size: 1.1rem; }
+            nav a { padding: 6px 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="container">
+        <h1>Exemplo completo de @media screen</h1>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Produtos</a>
+            <a href="#">Serviços</a>
+            <a href="#">Blog</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <main class="container layout">
+        <section>
+            <h2 style="margin: 0 0 12px; color: var(--primary);">Cards responsivos</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3 style="margin-top:0;">Card 1</h3>
+                    <p>Layout em 1 coluna no mobile, 2 no tablet e 3 no desktop.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Card 2</h3>
+                    <p>Tipografia e espaçamentos aumentam conforme a largura da tela.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Card 3</h3>
+                    <p>Use min-width para estratégia mobile-first.</p>
+                </div>
+                <div class="card">
+                    <h3 style="margin-top:0;">Card 4</h3>
+                    <p>Este exemplo também traz uma sidebar que vira sticky no desktop.</p>
+                </div>
+            </div>
+        </section>
+
+        <aside>
+            <strong>Dica:</strong> Comece com estilos base para mobile e
+            adapte progressivamente com <code>@media screen and (min-width: ...)</code>.
+        </aside>
+    </main>
+
+    <footer>
+        <small>Feito com @media screen — redimensione a janela para ver as mudanças.</small>
+    </footer>
+</body>
+</html>

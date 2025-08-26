@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos: var(), calc(), min(), max()</title>
+    <style>
+        :root{
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --primary: #38bdf8;
+            --card: #111827;
+            --line: #1f2937;
+            --space: 12px; /* usado com calc() */
+            --radius: 10px;
+        }
+
+        *{ box-sizing: border-box; }
+
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+        }
+
+        header{ padding: 16px; border-bottom: 1px solid var(--line); }
+        header h1{ margin: 0 0 4px; font-size: 1.25rem; }
+        header p{ margin: 0; color: var(--muted); }
+
+        .container{ width: min(92vw, 1100px); margin: 0 auto; padding: 16px; }
+
+        .grid{ display: grid; gap: 16px; grid-template-columns: 1fr; }
+        @media screen and (min-width: 800px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+
+        .card{
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: calc(var(--space) * 1.5); /* calc() com var() */
+        }
+        .card h3{ margin: 0 0 8px; color: var(--primary); }
+        .card p{ margin: 0 0 12px; color: var(--muted); }
+
+        /* Exemplo var() com fallback */
+        .badge{
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--badge-bg, #0b1220); /* usa fallback se --badge-bg não existir */
+            color: var(--badge-fg, var(--fg)); /* fallback encadeado */
+        }
+
+        /* Exemplo calc(): barra que desconta paddings/bordas */
+        .calc-box{
+            border: 1px dashed var(--line);
+            border-radius: var(--radius);
+            padding: var(--space);
+            /* largura interior = 100% - (padding esquerda+direita) - (borda esquerda+direita) */
+            width: calc(100% - (var(--space) * 2) - 2px);
+        }
+
+        /* Exemplo min(): limita crescer demais */
+        .limited{
+            width: min(100%, 480px);
+            background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(167,139,250,0.15));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space);
+        }
+
+        /* Exemplo max(): garante mínimo mesmo em telas estreitas */
+        .minimum{
+            width: max(320px, 40%);
+            background: linear-gradient(45deg, rgba(59,130,246,0.15), rgba(16,185,129,0.15));
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space);
+        }
+
+        /* Combinação min() + max(): faixa de crescimento controlado */
+        .band{
+            /* cresce com a viewport até 720px, mas nunca menor que 360px */
+            width: min(90vw, max(360px, 720px));
+            /* acima a expressão max(360px, 720px) resulta sempre 720px, logo width = min(90vw, 720px) */
+            border: 1px dashed var(--line);
+            border-radius: var(--radius);
+            padding: var(--space);
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>var(), calc(), min(), max()</h1>
+            <p>Exemplos práticos de funções CSS para responsividade e design tokens.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="grid">
+            <article class="card" style="--badge-bg:#0b1220; --badge-fg:#e2e8f0;">
+                <h3>var() com fallback</h3>
+                <p>Use variáveis de tema e valores alternativos quando ausentes.</p>
+                <span class="badge">Badge com vars</span>
+            </article>
+
+            <article class="card">
+                <h3>calc() com var()</h3>
+                <p>Calcula largura interna subtraindo paddings e bordas.</p>
+                <div class="calc-box">width: calc(100% - (var(--space) * 2) - 2px)</div>
+            </article>
+
+            <article class="card">
+                <h3>min()</h3>
+                <p>Limita o crescimento para evitar linhas muito longas.</p>
+                <div class="limited">width: min(100%, 480px)</div>
+            </article>
+
+            <article class="card">
+                <h3>max()</h3>
+                <p>Garante um tamanho mínimo confortável em telas estreitas.</p>
+                <div class="minimum">width: max(320px, 40%)</div>
+            </article>
+
+            <article class="card" style="grid-column: 1 / -1;">
+                <h3>Combinar min() + max()</h3>
+                <p>Controla faixa de crescimento: cresce com a viewport, com mínimo e máximo.</p>
+                <div class="band">width: min(90vw, max(360px, 720px))</div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

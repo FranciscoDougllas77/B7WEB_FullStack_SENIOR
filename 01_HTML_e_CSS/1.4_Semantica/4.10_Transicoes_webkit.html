@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Layout e componentes utilitários */
+        .container { display: grid; gap: 20px; }
+        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+        .card { padding: 16px; background: #f5f5f5; border: 1px solid #ddd; }
+        .demo { height: 120px; background: #fff; border: 1px solid #ccc; display: grid; place-items: center; }
+        .title { margin: 0 0 8px; font: 700 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .desc { margin: 0 0 12px; color: #374151; font: 400 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+        /* Transitions básicas */
+        .box-basic { width: 100%; background: #e0f2fe; transform: translateY(0); transition: transform .3s ease, background-color .3s ease; }
+        .box-basic:hover { transform: translateY(-8px); background-color: #bae6fd; }
+
+        /* Propriedades de transition explícitas */
+        .box-props { width: 100%; background: #ecfccb; opacity: 0.8; }
+        .box-props { transition-property: opacity, transform; transition-duration: .4s, .6s; transition-timing-function: ease, cubic-bezier(.2,.8,.2,1); transition-delay: 0s, .05s; }
+        .box-props:hover { opacity: 1; transform: scale(1.05); }
+
+        /* WebKit: prefixo legado para transition (mantido por compatibilidade) */
+        .box-webkit { width: 100%; background: #ede9fe; transform: scale(1); -webkit-transition: transform .35s ease; transition: transform .35s ease; }
+        .box-webkit:hover { transform: scale(1.07); }
+
+        /* WebKit: aparência nativa de inputs */
+        .input-reset { padding: 10px 12px; font: inherit; border: 1px solid #bbb; background: #fff; }
+        .input-reset { -webkit-appearance: none; appearance: none; border-radius: 6px; }
+        .input-reset:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,.25); }
+
+        /* WebKit: truncar texto em N linhas com clamp */
+        .clamp { max-width: 40ch; }
+        .clamp { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .clamp-note { color: #6b7280; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section>
+            <h1 class="title">Transitions (Transições)</h1>
+            <p class="desc">Suavizam mudanças de estado (ex.: hover) entre valores de propriedades.</p>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">Básico: transform + background</p>
+                    <p class="desc">Passe o mouse para ver a transição.</p>
+                    <div class="demo box-basic">Hover</div>
+                </div>
+                <div class="card">
+                    <p class="title">Propriedades detalhadas</p>
+                    <p class="desc">Controla property, duration, timing-function e delay.</p>
+                    <div class="demo box-props">Hover</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1 class="title">WebKit (prefixos e utilidades)</h1>
+            <div class="grid">
+                <div class="card">
+                    <p class="title">-webkit-transition</p>
+                    <p class="desc">Prefixo legado. Inclua também a versão sem prefixo.</p>
+                    <div class="demo box-webkit">Hover</div>
+                </div>
+                <div class="card">
+                    <p class="title">-webkit-appearance</p>
+                    <p class="desc">Remove o estilo nativo do controle para personalização.</p>
+                    <input class="input-reset" type="text" placeholder="Input customizado">
+                </div>
+                <div class="card">
+                    <p class="title">-webkit-line-clamp</p>
+                    <p class="desc">Trunca texto em 3 linhas usando WebKit Box.</p>
+                    <div class="clamp">
+                        CSS é uma linguagem de estilo em camadas que permite separar a apresentação do conteúdo. Transições e efeitos são úteis para melhorar a experiência do usuário, desde que utilizados com parcimônia e foco em acessibilidade.
+                    </div>
+                    <p class="clamp-note">Dica: combine <code>-webkit-line-clamp</code>, <code>-webkit-box-orient</code> e <code>display: -webkit-box</code>.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo CSS aspect-ratio</title>
+    <style>
+        :root{
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --primary: #38bdf8;
+            --card: #111827;
+            --line: #1f2937;
+        }
+
+        *{ box-sizing: border-box; }
+
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.5;
+        }
+
+        header{ padding: 16px; border-bottom: 1px solid var(--line); }
+        header h1{ margin: 0 0 4px; font-size: 1.25rem; }
+        header p{ margin: 0; color: var(--muted); }
+
+        .container{ max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+        .grid{ display: grid; gap: 16px; grid-template-columns: 1fr; }
+        @media screen and (min-width: 700px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+        @media screen and (min-width: 1000px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+
+        .card{ background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+        .card h3{ margin: 0 0 8px; color: var(--primary); }
+        .card p{ margin: 0 0 12px; color: var(--muted); }
+
+        /* Exemplo 1: box fixa 16:9 que vira 21:9 em telas largas */
+        .ratio-hero{
+            aspect-ratio: 16 / 9; /* mantém a proporção enquanto a largura muda */
+            width: 100%;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(56,189,248,0.25), rgba(167,139,250,0.25));
+            border: 1px dashed var(--line);
+        }
+        @media screen and (min-width: 900px){
+            .ratio-hero{ aspect-ratio: 21 / 9; }
+        }
+
+        /* Exemplo 2: galeria quadrada (1:1) com imagem recortada */
+        .thumb{
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+        }
+        .thumb img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        /* Exemplo 3: cartão 4:3 que vira 3:4 em telas estreitas */
+        .showcase{
+            aspect-ratio: 4 / 3;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px dashed var(--line);
+            background: linear-gradient(45deg, rgba(59,130,246,0.25), rgba(16,185,129,0.25));
+        }
+        @media screen and (max-width: 420px){
+            .showcase{ aspect-ratio: 3 / 4; }
+        }
+
+        /* Exemplo 4: vídeo responsivo com iframe preenchendo o container */
+        .video{
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            background: #000;
+        }
+        .video iframe{
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Exemplos de CSS aspect-ratio</h1>
+            <p>Controle de proporção em caixas, imagens, cartões e vídeos.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="grid">
+            <article class="card">
+                <h3>Hero responsivo (16:9 → 21:9)</h3>
+                <p>Mantém a proporção conforme a largura muda; amplia para 21:9 em telas largas.</p>
+                <div class="ratio-hero"></div>
+            </article>
+
+            <article class="card">
+                <h3>Thumb quadrada (1:1)</h3>
+                <p>Imagem com <code>object-fit: cover</code> para preencher sem distorcer.</p>
+                <div class="thumb">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60" alt="Paisagem">
+                </div>
+            </article>
+
+            <article class="card">
+                <h3>Showcase (4:3 → 3:4)</h3>
+                <p>Vira retrato em telas muito estreitas para melhor aproveitamento vertical.</p>
+                <div class="showcase"></div>
+            </article>
+
+            <article class="card" style="grid-column: 1 / -1;">
+                <h3>Vídeo responsivo (iframe dentro de container)</h3>
+                <p>O container define a proporção; o iframe preenche via 100% x 100%.</p>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

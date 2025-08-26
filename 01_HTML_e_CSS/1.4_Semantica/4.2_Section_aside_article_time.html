@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo: section, article, aside e time</title>
+    <style>
+        :root{
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --line: #1f2937;
+            --brand: #38bdf8;
+            --card: #111827;
+            --radius: 10px;
+        }
+
+        *{ box-sizing: border-box; }
+
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--fg);
+            line-height: 1.6;
+        }
+
+        header{ padding: 16px; border-bottom: 1px solid var(--line); }
+        header h1{ margin: 0; font-size: 1.25rem; }
+        header p{ margin: 4px 0 0; color: var(--muted); }
+
+        .container{ max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+        .layout{ display: grid; gap: 20px; grid-template-columns: 1fr; }
+        @media screen and (min-width: 900px){ .layout{ grid-template-columns: 2fr 1fr; align-items: start; } }
+
+        section[aria-labelledby]{ display: grid; gap: 16px; }
+        .section-title{ margin: 0; font-size: 1.125rem; color: var(--brand); }
+
+        article{
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+        article h2{ margin: 0 0 6px; font-size: 1.1rem; }
+        .meta{ color: var(--muted); font-size: 0.95rem; margin: 0 0 10px; }
+        .meta time{ color: var(--fg); }
+        article p{ margin: 0; }
+
+        aside{
+            background: #0b1220;
+            border: 1px dashed var(--line);
+            border-radius: var(--radius);
+            padding: 16px;
+            color: var(--muted);
+        }
+        aside h3{ margin-top: 0; color: var(--fg); font-size: 1rem; }
+        .aside-list{ list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; }
+        .aside-list a{ color: var(--fg); text-decoration: none; }
+        .aside-list a:hover{ text-decoration: underline; }
+
+        footer{ padding: 16px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Exemplo semântico: section, article, aside e time</h1>
+            <p>Estruture conteúdos por tópicos (section), unidades independentes (article), complementos (aside) e datas semânticas (time).</p>
+        </div>
+    </header>
+
+    <main class="container layout">
+        <section aria-labelledby="recentes">
+            <h2 id="recentes" class="section-title">Artigos recentes</h2>
+
+            <article aria-labelledby="art1-titulo">
+                <h2 id="art1-titulo">Acessibilidade na Web Moderna</h2>
+                <p class="meta">
+                    Publicado em
+                    <time datetime="2025-02-10">10 de fevereiro de 2025</time>
+                    · 6 min de leitura
+                </p>
+                <p>Práticas essenciais para tornar aplicações inclusivas, cobrindo navegação por teclado, contraste e leitores de tela.</p>
+            </article>
+
+            <article aria-labelledby="art2-titulo">
+                <h2 id="art2-titulo">CSS moderno: layout fluido com min(), max() e clamp()</h2>
+                <p class="meta">
+                    Atualizado em
+                    <time datetime="2025-01-28" title="Última atualização">28 de janeiro de 2025</time>
+                    · 8 min de leitura
+                </p>
+                <p>Como combinar funções CSS para tipografia fluida, limites de largura e componentes responsivos.</p>
+            </article>
+        </section>
+
+        <aside aria-labelledby="sidebar">
+            <h3 id="sidebar">Destaques e próximos eventos</h3>
+            <ul class="aside-list">
+                <li>
+                    <a href="#">Guia de semântica HTML</a>
+                    — <time datetime="2025-03-01">1º mar 2025</time>
+                </li>
+                <li>
+                    <a href="#">Workshop de CSS Grid</a>
+                    — <time datetime="2025-03-18">18 mar 2025</time>
+                </li>
+                <li>
+                    <a href="#">Acessibilidade: além do básico</a>
+                    — <time datetime="2025-04-05">5 abr 2025</time>
+                </li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <small>&copy; 2025 Exemplo Semântico. Conteúdos com datas marcadas por <code>&lt;time&gt;</code>.</small>
+    </footer>
+</body>
+</html>

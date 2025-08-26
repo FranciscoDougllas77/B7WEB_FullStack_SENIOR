@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        .card { padding: 16px; background: #f5f5f5; border: 1px solid #ddd; }
+        .demo { height: 100px; background: #fff; border: 1px solid #ccc; display: grid; place-items: center; }
+        .demo-no-border { border: none; background: #fdf2f8; }
+
+        /* Transition (suaviza mudanças de estado, ex.: hover) */
+        .transition-box { background: #e0f2fe; transform: translateX(0); transition: transform .3s ease, background .3s ease; }
+        .transition-box:hover { transform: translateX(16px); background: #bae6fd; }
+
+        /* Animation com @keyframes */
+        @keyframes pulseScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .animation-box { background: #ede9fe; animation: pulseScale 1.2s ease-in-out infinite; }
+
+        /* Box-shadow exemplos */
+        .shadow-soft { box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+        .shadow-strong { box-shadow: 0 10px 20px rgba(0,0,0,.25), 0 6px 6px rgba(0,0,0,.20); }
+        .shadow-inset { box-shadow: inset 0 4px 10px rgba(0,0,0,.15); }
+
+        /* Text-shadow exemplo */
+        .text { font: 600 20px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+        .text-shadow { color: #1f2937; text-shadow: 1px 1px 2px rgba(0,0,0,.25); }
+    </style>
+</head>
+<body>
+    <h1>Animações e Sombras</h1>
+
+    <h2>Transition</h2>
+    <p>Suaviza mudanças em propriedades. Exemplo ao passar o mouse:</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>transform + background com transition</strong></p>
+            <div class="demo transition-box">Passe o mouse</div>
+        </div>
+    </div>
+
+    <h2>Animação (@keyframes)</h2>
+    <p>Cria animações contínuas ou controladas no tempo.</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>pulseScale 1.2s infinite</strong></p>
+            <div class="demo animation-box">Animando…</div>
+        </div>
+    </div>
+
+    <h2>Box-shadow</h2>
+    <p>Sombras em elementos. Exemplos: suave, forte e interna (inset).</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>Sombria suave</strong></p>
+            <div class="demo shadow-soft"></div>
+        </div>
+        <div class="card">
+            <p><strong>Sombria forte (camadas)</strong></p>
+            <div class="demo shadow-strong"></div>
+        </div>
+        <div class="card">
+            <p><strong>Sombria interna (inset)</strong></p>
+            <div class="demo shadow-inset"></div>
+        </div>
+    </div>
+
+    <h2>Text-shadow</h2>
+    <p>Sombras em textos para destaque e legibilidade.</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>text-shadow: 1px 1px 2px rgba(0,0,0,.25)</strong></p>
+            <div class="demo demo-no-border">
+                <span class="text text-shadow">Texto com sombra</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

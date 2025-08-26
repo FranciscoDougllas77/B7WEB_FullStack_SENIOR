@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        .card { padding: 16px; background: #f5f5f5; border: 1px solid #ddd; }
+        .demo { height: 100px; border: 1px solid #ccc; background: #fff; }
+
+        /* Border-radius exemplos */
+        .br-px { border-radius: 12px; }
+        .br-percent { border-radius: 50%; }
+        .br-cantos { border-top-left-radius: 24px; border-top-right-radius: 0; border-bottom-right-radius: 24px; border-bottom-left-radius: 0; }
+
+        /* Gradientes */
+        .grad-linear { background: linear-gradient(135deg, #4f46e5, #22d3ee); border: none; }
+        .grad-linear-dir { background: linear-gradient(to right, #ef4444, #f59e0b); border: none; }
+        .grad-radial { background: radial-gradient(circle at 30% 30%, #10b981, #047857); border: none; }
+    </style>
+</head>
+<body>
+    <h1>Border Radius e Degradê (Gradients)</h1>
+
+    <h2>Border Radius</h2>
+    <p>Arredonda cantos dos elementos. Pode usar <strong>px</strong> (valor fixo) ou <strong>%</strong> (proporcional).</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>border-radius: 12px</strong></p>
+            <div class="demo br-px"></div>
+        </div>
+        <div class="card">
+            <p><strong>border-radius: 50%</strong> (círculo/oval)</p>
+            <div class="demo br-percent"></div>
+        </div>
+        <div class="card">
+            <p><strong>cantos individuais</strong></p>
+            <div class="demo br-cantos"></div>
+        </div>
+    </div>
+
+    <h2>Degradês (CSS Gradients)</h2>
+    <p>Cria transições suaves entre cores, sem imagens.</p>
+    <div class="grid">
+        <div class="card">
+            <p><strong>linear-gradient(135deg, cor1, cor2)</strong></p>
+            <div class="demo grad-linear"></div>
+        </div>
+        <div class="card">
+            <p><strong>linear-gradient(to right, cor1, cor2)</strong></p>
+            <div class="demo grad-linear-dir"></div>
+        </div>
+        <div class="card">
+            <p><strong>radial-gradient(circle at x y, cor1, cor2)</strong></p>
+            <div class="demo grad-radial"></div>
+        </div>
+    </div>
+</body>
+</html>

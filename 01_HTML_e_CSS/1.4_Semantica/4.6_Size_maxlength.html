@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>size vs maxlength</h1>
+
+    <p>O atributo <strong>size</strong> define quantos caracteres cabem visivelmente no campo (largura). Não limita a quantidade digitada.</p>
+    <p>O atributo <strong>maxlength</strong> define o <em>limite real</em> de caracteres que podem ser digitados.</p>
+
+    <form>
+        <div>
+            <label for="nome-size">Nome (apenas size=20):</label>
+            <input type="text" id="nome-size" name="nomeSize" size="20" placeholder="Visível ~20 chars">
+        </div>
+
+        <div>
+            <label for="usuario-max">Usuário (maxlength=10):</label>
+            <input type="text" id="usuario-max" name="usuarioMax" maxlength="10" placeholder="Máx. 10 chars">
+        </div>
+
+        <div>
+            <label for="apelido-ambos">Apelido (size=10, maxlength=5):</label>
+            <input type="text" id="apelido-ambos" name="apelidoAmbos" size="10" maxlength="5" placeholder="Mostra 10, aceita 5">
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

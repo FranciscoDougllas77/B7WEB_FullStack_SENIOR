@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo @media (orientation)</title>
+    <style>
+        :root{
+            --bg: #0f172a;
+            --fg: #e2e8f0;
+            --muted: #94a3b8;
+            --accent: #22d3ee;
+            --accent-2: #a78bfa;
+            --card: #111827;
+        }
+
+        *{ box-sizing: border-box; }
+
+        body{
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--fg);
+        }
+
+        header{
+            padding: 16px;
+            border-bottom: 1px solid #1f2937;
+        }
+        header h1{ margin: 0; font-size: 1.25rem; }
+
+        .container{ max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+        .orientation-badge{
+            display: inline-flex; gap: 8px; align-items: center;
+            padding: 6px 10px; border-radius: 999px; border: 1px solid #1f2937;
+            background: #0b1220; color: var(--muted);
+        }
+        .orientation-badge .dot{ width: 8px; height: 8px; border-radius: 999px; background: var(--muted); }
+        .orientation-badge .portrait{ display: none; }
+        .orientation-badge .landscape{ display: none; }
+
+        .workspace{
+            display: grid; gap: 12px; margin-top: 16px;
+            grid-template-columns: 1fr; /* portrait padrão */
+        }
+        .pane{
+            background: var(--card); border: 1px solid #1f2937; border-radius: 10px; padding: 16px;
+        }
+        .pane h3{ margin-top: 0; }
+        .preview{ height: 160px; border-radius: 8px; border: 1px dashed #1f2937; }
+
+        footer{ padding: 16px; border-top: 1px solid #1f2937; text-align: center; color: var(--muted); }
+
+        /* Portrait: telas mais altas que largas */
+        @media screen and (orientation: portrait){
+            header{ background: linear-gradient(0deg, rgba(34,211,238,0.08), transparent 60%); }
+            .orientation-badge .portrait{ display: inline; }
+            .orientation-badge .dot{ background: var(--accent); }
+            .preview{ background: linear-gradient(135deg, rgba(34,211,238,0.25), rgba(16,185,129,0.15)); }
+            .workspace{ grid-template-columns: 1fr; }
+        }
+
+        /* Landscape: telas mais largas que altas */
+        @media screen and (orientation: landscape){
+            header{ background: linear-gradient(90deg, rgba(167,139,250,0.08), transparent 60%); }
+            .orientation-badge .landscape{ display: inline; }
+            .orientation-badge .dot{ background: var(--accent-2); }
+            .preview{ background: linear-gradient(45deg, rgba(167,139,250,0.25), rgba(59,130,246,0.15)); }
+            .workspace{ grid-template-columns: 2fr 1fr; align-items: start; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Exemplo de @media (orientation)</h1>
+            <div class="orientation-badge" title="Muda conforme a orientação do dispositivo">
+                <span class="dot"></span>
+                <span class="portrait">Portrait (retrato)</span>
+                <span class="landscape">Landscape (paisagem)</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="workspace">
+            <div class="pane">
+                <h3>Área principal</h3>
+                <p>Esta área fica acima (retrato) ou à esquerda (paisagem).</p>
+                <div class="preview"></div>
+            </div>
+            <aside class="pane">
+                <h3>Painel lateral</h3>
+                <p>No modo paisagem, aparece ao lado para aproveitar a largura extra.</p>
+                <div class="preview"></div>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <small>Gire o dispositivo ou altere as dimensões da janela para ver a mudança.</small>
+    </footer>
+</body>
+</html>
