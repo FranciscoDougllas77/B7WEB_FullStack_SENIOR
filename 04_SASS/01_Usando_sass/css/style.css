@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+main section {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px, 0 0 10px #333 inset;
+}
+main .item1, main .item3 {
+  background: linear-gradient(45deg, red 50%, blue 50%);
+}
+main .item2, main .item4 {
+  background: linear-gradient(135deg, blue 50%, red 50%);
+}
+
+/*# sourceMappingURL=style.css.map */
