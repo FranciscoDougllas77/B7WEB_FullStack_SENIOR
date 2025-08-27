@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Primeira letra */
+        .dropcap::first-letter {
+            font-size: 3rem;
+            line-height: 1;
+            float: left;
+            margin: 0 .4rem 0 0;
+            color: #b22222;
+            font-weight: 700;
+        }
+
+        /* Primeira linha */
+        .intro::first-line {
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            color: #0a4;
+            font-weight: 600;
+        }
+
+        /* Combinando ambas (funcionam de forma independente) */
+        .texto-formatado::first-letter {
+            color: #005bbb;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        .texto-formatado::first-line {
+            background: #eef7ff;
+        }
+
+        p {
+            max-width: 60ch;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pseudo-elementos ::first-letter e ::first-line</h1>
+
+    <h2>::first-letter (primeira letra)</h2>
+    <p class="dropcap">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum blandit, nunc sed aliquet fringilla, enim urna vehicula metus, a porttitor nibh eros non augue.</p>
+
+    <h2>::first-line (primeira linha)</h2>
+    <p class="intro">Curabitur vel turpis ac risus interdum porttitor. Aliquam erat volutpat. Integer bibendum, arcu a porttitor faucibus, elit sapien imperdiet lectus, non luctus nisl elit quis massa.</p>
+
+    <h2>Combinando ::first-letter e ::first-line</h2>
+    <p class="texto-formatado">Phasellus iaculis, nisl vitae gravida fringilla, tortor felis lacinia nunc, et maximus tortor mi sit amet velit. Aenean ac iaculis arcu. Sed ullamcorper libero vel pretium vehicula.</p>
+
+    <h2>Observações de suporte</h2>
+    <ul>
+        <li>Aplicam-se a elementos de bloco com texto (ex.: p, div, article).</li>
+        <li>Propriedades suportadas podem variar (ex.: `float` funciona em ::first-letter, mas não em ::first-line).</li>
+        <li>Conteúdo gerado antes do texto pode afetar o que é considerado "primeira letra/linha".</li>
+    </ul>
+</body>
+</html>

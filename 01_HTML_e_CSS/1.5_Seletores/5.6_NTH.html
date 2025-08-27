@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Listas: pares/ímpares */
+        ul.zebra { margin-left: 1.25rem; }
+        ul.zebra li:nth-child(odd) { background: #f7faff; }
+        ul.zebra li:nth-child(even) { background: #f0f4ff; }
+        ul.zebra li { padding: .25rem .5rem; }
+
+        /* Tabela zebrada e destacar cada 3ª linha a partir da 2ª (3n+2) */
+        table { border-collapse: collapse; margin: .5rem 0; min-width: 360px; }
+        td, th { border: 1px solid #ddd; padding: .4rem .6rem; }
+        tbody tr:nth-child(odd) { background: #fafafa; }
+        tbody tr:nth-child(3n+2) { background: #fff4e6; }
+
+        /* Grid: a cada 3 itens, começar um padrão (3n+1) */
+        .grid { display: grid; grid-template-columns: repeat(4, minmax(80px, 1fr)); gap: .5rem; }
+        .grid .item { background: #eef2f7; padding: .6rem; text-align: center; border-radius: 6px; }
+        .grid .item:nth-child(3n+1) { background: #dff4ff; }
+
+        /* Selecionar os 3 primeiros e os 3 últimos */
+        .barras .bar { height: 10px; background: #cfd8dc; margin: .25rem 0; }
+        .barras .bar:nth-child(-n+3) { background: #8bc34a; }
+        .barras .bar:nth-last-child(-n+3) { background: #ff9800; }
+
+        /* Diferença entre nth-child e nth-of-type em conteúdo misto */
+        .misto { border: 1px solid #ddd; padding: .5rem; }
+        .misto > * { display: block; margin: .25rem 0; padding: .25rem .4rem; background: #f7f7f7; }
+        .misto :nth-child(2) { outline: 2px solid #005bbb; }
+        .misto p:nth-of-type(2) { background: #e6f7ff; }
+    </style>
+</head>
+<body>
+    <h1>Seletores :nth-*</h1>
+
+    <h2>Lista: ímpares e pares</h2>
+    <ul class="zebra">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+
+    <h2>Tabela: zebra + cada 3ª linha começando na 2ª (3n+2)</h2>
+    <table>
+        <thead>
+            <tr><th>#</th><th>Nome</th><th>Valor</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>A</td><td>10</td></tr>
+            <tr><td>2</td><td>B</td><td>20</td></tr>
+            <tr><td>3</td><td>C</td><td>30</td></tr>
+            <tr><td>4</td><td>D</td><td>40</td></tr>
+            <tr><td>5</td><td>E</td><td>50</td></tr>
+            <tr><td>6</td><td>F</td><td>60</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Grid: padrão a cada 3 itens (3n+1)</h2>
+    <div class="grid">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+    </div>
+
+    <h2>Selecionando faixas: primeiros e últimos</h2>
+    <div class="barras">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <p>Verde: primeiros 3 com <code>:nth-child(-n+3)</code>. Laranja: últimos 3 com <code>:nth-last-child(-n+3)</code>.</p>
+
+    <h2>Diferença: :nth-child vs :nth-of-type</h2>
+    <div class="misto">
+        <h4>Um título</h4>
+        <p>Parágrafo A</p>
+        <span>Span X</span>
+        <p>Parágrafo B</p>
+        <p>Parágrafo C</p>
+    </div>
+    <ul>
+        <li><code>:nth-child(2)</code> marca o segundo filho global (contando todas as tags).</li>
+        <li><code>p:nth-of-type(2)</code> marca o segundo <code>p</code> entre seus irmãos do mesmo tipo.</li>
+    </ul>
+</body>
+</html>

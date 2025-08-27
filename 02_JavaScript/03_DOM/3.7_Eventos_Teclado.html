@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplo: Manipulação de Eventos de Teclado com o DOM
+
+        Eventos de teclado permitem executar ações quando o usuário pressiona, solta ou mantém pressionada uma tecla.
+        Os principais eventos são:
+        - keydown: Disparado quando uma tecla é pressionada.
+        - keyup: Disparado quando uma tecla é solta.
+        - keypress: Disparado enquanto a tecla está sendo pressionada (menos usado atualmente).
+
+        Abaixo, um exemplo prático mostrando como capturar e exibir informações das teclas pressionadas em um input.
+    -->
+
+    <h1>Eventos de Teclado com JavaScript</h1>
+    <p>Digite algo no campo abaixo e veja os eventos de teclado em ação:</p>
+
+    <input id="campoTeclado" type="text" placeholder="Digite aqui..." autocomplete="off">
+    <div id="saida" style="margin-top: 20px; font-size: 1.1rem; color: #333;"></div>
+
+    <script>
+        // Selecionando os elementos
+        const campoTeclado = document.getElementById('campoTeclado');
+        const saida = document.getElementById('saida');
+
+        // Evento keydown: dispara ao pressionar qualquer tecla
+        campoTeclado.addEventListener('keydown', function(event) {
+            saida.innerHTML = `
+                <strong>keydown</strong><br>
+                Tecla pressionada: <span style="color:blue">${event.key}</span> <br>
+                Código da tecla: <span style="color:green">${event.code}</span>
+            `;
+        });
+
+        // Evento keyup: dispara ao soltar a tecla
+        campoTeclado.addEventListener('keyup', function(event) {
+            saida.innerHTML += `
+                <br><strong>keyup</strong> - Tecla liberada: <span style="color:purple">${event.key}</span>
+            `;
+        });
+
+        // Evento keypress: dispara enquanto a tecla está sendo pressionada (não funciona para todas as teclas)
+        campoTeclado.addEventListener('keypress', function(event) {
+            saida.innerHTML += `
+                <br><strong>keypress</strong> - Tecla pressionada: <span style="color:orange">${event.key}</span>
+            `;
+        });
+
+        // Exemplo extra: impedir que números sejam digitados
+        /*
+        campoTeclado.addEventListener('keydown', function(event) {
+            if (!isNaN(event.key) && event.key !== " ") {
+                event.preventDefault();
+                saida.innerHTML = "Números não são permitidos!";
+            }
+        });
+        */
+    </script>
+
+    <!-- 
+        Resumo:
+        - Usamos addEventListener para escutar eventos de teclado em um input.
+        - O objeto 'event' traz informações como 'key' (nome da tecla) e 'code' (código físico da tecla).
+        - Podemos usar esses eventos para criar atalhos, validações, navegação e muito mais!
+    -->
+</body>
+</html>

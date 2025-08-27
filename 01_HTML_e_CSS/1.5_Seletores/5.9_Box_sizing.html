@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset global recomendado */
+        .reset *,
+        .reset *::before,
+        .reset *::after { box-sizing: border-box; }
+
+        .wrap { border: 1px solid #eee; padding: 10px; border-radius: 8px; margin: 12px 0; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(260px, 1fr)); gap: 16px; }
+        .caixa { height: 100px; padding: 20px; border: 10px solid #90caf9; background: #e3f2fd; }
+        .info { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; color: #444; }
+
+        /* Demonstração direta */
+        .content-box { box-sizing: content-box; width: 300px; }
+        .border-box  { box-sizing: border-box;  width: 300px; }
+
+        /* Layout de formulário previsível com border-box */
+        .form.reset { max-width: 520px; }
+        .linha { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .campo { display: flex; flex-direction: column; gap: 6px; }
+        .campo input { padding: 10px 12px; border: 2px solid #cfd8dc; border-radius: 6px; width: 100%; }
+        .btn { margin-top: 10px; padding: 10px 14px; border: 1px solid #90caf9; background: #e3f2fd; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <h1>Box-sizing</h1>
+    <p><strong>O que é:</strong> controla como o navegador calcula a largura/altura de um elemento, considerando conteúdo, padding e borda.</p>
+
+    <div class="wrap">
+        <h2>Comparação direta</h2>
+        <p class="info">Ambas têm width: 300px; padding: 20px; border: 10px.</p>
+        <div class="grid">
+            <div>
+                <h3>content-box (padrão)</h3>
+                <div class="caixa content-box">Largura total = 300 + 20+20 + 10+10 = 360px</div>
+            </div>
+            <div>
+                <h3>border-box</h3>
+                <div class="caixa border-box">Largura total = 300px (padding e borda inclusos)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap reset">
+        <h2>Reset global recomendado</h2>
+        <p class="info">Aplicar <code>box-sizing: border-box</code> em tudo simplifica layouts e evita “estouro” de largura.</p>
+        <pre class="info">*, *::before, *::after { box-sizing: border-box; }</pre>
+        <div class="form reset">
+            <div class="linha">
+                <div class="campo">
+                    <label>Nome</label>
+                    <input type="text" placeholder="Seu nome">
+                </div>
+                <div class="campo">
+                    <label>Sobrenome</label>
+                    <input type="text" placeholder="Seu sobrenome">
+                </div>
+            </div>
+            <div class="linha">
+                <div class="campo">
+                    <label>Email</label>
+                    <input type="email" placeholder="email@exemplo.com">
+                </div>
+                <div class="campo">
+                    <label>Telefone</label>
+                    <input type="tel" placeholder="(00) 00000-0000">
+                </div>
+            </div>
+            <button class="btn">Enviar</button>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <h2>Dicas</h2>
+        <ul>
+            <li><strong>content-box</strong>: width/height medem apenas o conteúdo. Padding e borda somam à dimensão total.</li>
+            <li><strong>border-box</strong>: width/height incluem conteúdo + padding + borda (mais previsível para grid/flex).</li>
+            <li>Em componentes reutilizáveis, prefira <code>border-box</code> para evitar “quebras” quando padding/borda mudarem.</li>
+        </ul>
+    </div>
+</body>
+</html>

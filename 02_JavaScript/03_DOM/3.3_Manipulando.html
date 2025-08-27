@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplo: Manipulando Elementos com o DOM
+
+        O DOM permite alterar o conteúdo, atributos, estilos e classes dos elementos HTML usando JavaScript.
+        Abaixo estão exemplos de manipulação de elementos de várias formas.
+    -->
+
+    <h1 id="titulo">Título Original</h1>
+    <p id="paragrafo">Este é um parágrafo de exemplo.</p>
+    <img id="imagem" src="https://via.placeholder.com/150" alt="Imagem Exemplo">
+    <br>
+    <input id="campoTexto" type="text" value="Texto inicial">
+    <button id="botao">Clique para Manipular</button>
+    <ul id="lista">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <script>
+        // Selecionando elementos
+        const titulo = document.getElementById('titulo');
+        const paragrafo = document.getElementById('paragrafo');
+        const imagem = document.getElementById('imagem');
+        const campoTexto = document.getElementById('campoTexto');
+        const botao = document.getElementById('botao');
+        const lista = document.getElementById('lista');
+
+        // Manipulando conteúdo de texto
+        // Altera o texto do título
+        titulo.innerText = "Título Alterado via DOM";
+
+        // Manipulando conteúdo HTML
+        // Adiciona um span ao parágrafo
+        paragrafo.innerHTML += " <span style='color: red'>(Texto adicionado com innerHTML)</span>";
+
+        // Manipulando atributos
+        // Altera o src e o alt da imagem
+        imagem.setAttribute('src', 'https://via.placeholder.com/200');
+        imagem.setAttribute('alt', 'Nova Imagem');
+
+        // Manipulando estilos (CSS)
+        // Muda a cor e o tamanho da fonte do título
+        titulo.style.color = 'blue';
+        titulo.style.fontSize = '2.5rem';
+
+        // Manipulando classes
+        // Adiciona uma classe ao parágrafo
+        paragrafo.classList.add('destaque');
+        // Remove a classe depois de 2 segundos
+        setTimeout(() => {
+            paragrafo.classList.remove('destaque');
+        }, 2000);
+
+        // Manipulando valores de inputs
+        // Altera o valor do campo de texto
+        campoTexto.value = "Valor alterado via DOM";
+
+        // Criando e inserindo novos elementos
+        // Cria um novo item de lista e adiciona à lista
+        const novoItem = document.createElement('li');
+        novoItem.innerText = "Item 3 (adicionado via DOM)";
+        lista.appendChild(novoItem);
+
+        // Removendo elementos
+        // Remove o primeiro item da lista após 3 segundos
+        setTimeout(() => {
+            if (lista.firstElementChild) {
+                lista.removeChild(lista.firstElementChild);
+            }
+        }, 3000);
+
+        // Exemplo de manipulação ao clicar no botão
+        botao.addEventListener('click', function() {
+            // Alterna a cor do título
+            if (titulo.style.color === 'blue') {
+                titulo.style.color = 'green';
+            } else {
+                titulo.style.color = 'blue';
+            }
+
+            // Adiciona um novo item à lista
+            const itemExtra = document.createElement('li');
+            itemExtra.innerText = "Novo item adicionado ao clicar";
+            lista.appendChild(itemExtra);
+
+            // Altera o valor do input
+            campoTexto.value = "Você clicou no botão!";
+        });
+
+        // Exemplo de alteração de atributo diretamente
+        imagem.width = 250; // altera a largura da imagem
+
+        // Exemplo de toggle de classe
+        setInterval(() => {
+            paragrafo.classList.toggle('destaque');
+        }, 1000);
+
+        // CSS para destaque
+        // (Adicionando via JS para manter tudo no mesmo arquivo)
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .destaque {
+                background-color: yellow;
+                font-weight: bold;
+                transition: background 0.5s;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

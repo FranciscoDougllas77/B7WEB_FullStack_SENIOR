@@ -1,0 +1,108 @@
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+        padding: 32px 28px 28px 28px;
+        width: 100%;
+        max-width: 400px;
+        margin: 40px 0;
+    }
+    h1 {
+        text-align: center;
+        color: #5f2eea;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+    .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+    #novaTarefa {
+        flex: 1;
+        padding: 12px 14px;
+        border: 1.5px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s;
+        background: #f7f7fa;
+    }
+    #novaTarefa:focus {
+        border-color: #764ba2;
+        background: #f0f0ff;
+    }
+    #adicionarTarefa {
+        background: linear-gradient(135deg, #5f2eea 0%, #764ba2 100%);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0 18px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.1s;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    }
+    #adicionarTarefa:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #5f2eea 100%);
+        transform: scale(1.07);
+    }
+    #listaTarefas {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .tarefa {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f7f7fa;
+        border-radius: 8px;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 1px 4px rgba(44, 62, 80, 0.04);
+        transition: background 0.2s;
+        font-size: 1rem;
+    }
+    .tarefa.concluida {
+        text-decoration: line-through;
+        color: #b0b0b0;
+        background: #e6e6f7;
+    }
+    .acoes {
+        display: flex;
+        gap: 8px;
+    }
+    .btn-acao {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        padding: 4px 7px;
+        transition: background 0.15s;
+        color: #764ba2;
+    }
+    .btn-acao:hover {
+        background: #ece9f7;
+    }
+    @media (max-width: 500px) {
+        .container {
+            padding: 18px 6px 18px 6px;
+        }
+        h1 {
+            font-size: 1.3rem;
+        }
+    }

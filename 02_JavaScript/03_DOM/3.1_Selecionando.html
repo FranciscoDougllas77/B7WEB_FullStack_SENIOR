@@ -1,0 +1,48 @@
+<!-- 
+    Exemplo: Selecionando Elementos no HTML com o DOM
+
+    O DOM (Document Object Model) permite acessar e manipular elementos HTML usando JavaScript.
+    Podemos selecionar elementos de várias formas, como por id, por classe ou pelo nome da tag.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionando Elementos com DOM</title>
+    <style>
+        .destaque {
+            color: blue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Título da Página</h1>
+    <p class="descricao">Este é um parágrafo de exemplo.</p>
+    <p class="descricao">Outro parágrafo com a mesma classe.</p>
+    <button id="botao">Clique aqui</button>
+
+    <script>
+        // Selecionando pelo ID
+        const titulo = document.getElementById('titulo');
+        titulo.innerText = "Título alterado via DOM!";
+
+        // Selecionando por classe (retorna uma coleção)
+        const paragrafos = document.getElementsByClassName('descricao');
+        paragrafos[0].style.color = "red"; // Altera a cor do primeiro parágrafo
+        paragrafos[1].classList.add('destaque'); // Adiciona uma classe ao segundo parágrafo
+
+        // Selecionando por tag
+        const botoes = document.getElementsByTagName('button');
+        botoes[0].onclick = function() {
+            alert("Você clicou no botão!");
+        };
+
+        // Também é possível usar querySelector e querySelectorAll
+        // Seleciona o primeiro elemento que corresponde ao seletor CSS
+        const primeiroParagrafo = document.querySelector('.descricao');
+        primeiroParagrafo.innerHTML += " (selecionado com querySelector)";
+    </script>
+</body>
+</html>

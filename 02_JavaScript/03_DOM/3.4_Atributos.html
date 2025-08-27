@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplo: Manipulação de Atributos com o DOM
+
+        O DOM permite acessar e modificar atributos dos elementos HTML usando JavaScript.
+        Podemos usar métodos como setAttribute, getAttribute e removeAttribute.
+    -->
+
+    <h1 id="titulo">Manipulando Atributos com o DOM</h1>
+
+    <img id="minhaImagem" src="https://via.placeholder.com/150" alt="Imagem Inicial" width="150">
+    <br><br>
+
+    <a id="meuLink" href="https://www.google.com" target="_blank">Ir para o Google</a>
+    <br><br>
+
+    <input id="meuInput" type="text" placeholder="Digite algo aqui">
+    <br><br>
+
+    <button id="botaoAlterar">Alterar Atributos</button>
+    <button id="botaoRemover">Remover Atributos</button>
+
+    <p id="info"></p>
+
+    <script>
+        // Selecionando elementos
+        const imagem = document.getElementById('minhaImagem');
+        const link = document.getElementById('meuLink');
+        const input = document.getElementById('meuInput');
+        const botaoAlterar = document.getElementById('botaoAlterar');
+        const botaoRemover = document.getElementById('botaoRemover');
+        const info = document.getElementById('info');
+
+        // Função para alterar atributos
+        botaoAlterar.addEventListener('click', function() {
+            // Altera o src e o alt da imagem
+            imagem.setAttribute('src', 'https://via.placeholder.com/200');
+            imagem.setAttribute('alt', 'Imagem Alterada');
+            imagem.setAttribute('width', '200');
+
+            // Altera o href e o texto do link
+            link.setAttribute('href', 'https://www.b7web.com.br');
+            link.innerText = "Ir para a B7Web";
+
+            // Altera o placeholder do input
+            input.setAttribute('placeholder', 'Atributo alterado!');
+
+            // Mostra os atributos atuais
+            info.innerHTML = `
+                <strong>Atributos atuais:</strong><br>
+                Imagem src: ${imagem.getAttribute('src')}<br>
+                Imagem alt: ${imagem.getAttribute('alt')}<br>
+                Link href: ${link.getAttribute('href')}<br>
+                Input placeholder: ${input.getAttribute('placeholder')}
+            `;
+        });
+
+        // Função para remover atributos
+        botaoRemover.addEventListener('click', function() {
+            // Remove o atributo alt da imagem
+            imagem.removeAttribute('alt');
+
+            // Remove o atributo target do link
+            link.removeAttribute('target');
+
+            // Remove o atributo placeholder do input
+            input.removeAttribute('placeholder');
+
+            // Mostra os atributos após remoção
+            info.innerHTML = `
+                <strong>Atributos após remoção:</strong><br>
+                Imagem alt: ${imagem.getAttribute('alt')}<br>
+                Link target: ${link.getAttribute('target')}<br>
+                Input placeholder: ${input.getAttribute('placeholder')}
+            `;
+        });
+    </script>
+</body>
+</html>

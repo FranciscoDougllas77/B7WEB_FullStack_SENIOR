@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1) Ícone antes do link */
+        a.icone::before {
+            content: "🔗";
+            margin-right: .4rem;
+        }
+
+        /* 2) Badge numérico com ::after */
+        .btn {
+            position: relative;
+            display: inline-block;
+            padding: .5rem .75rem;
+            border: 1px solid #ccc;
+            background: #f7f7f7;
+            border-radius: 6px;
+        }
+        .btn[data-badge]::after {
+            content: attr(data-badge);
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 4px;
+            border-radius: 999px;
+            background: #e53935;
+            color: #fff;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,.15);
+        }
+
+        /* 3) Citações com aspas usando open-quote/close-quote */
+        blockquote {
+            quotes: "\201C" "\201D" "\2018" "\2019";
+            border-left: 4px solid #cfd8dc;
+            margin: .5rem 0;
+            padding: .25rem .75rem;
+            background: #f5f7f9;
+        }
+        blockquote::before {
+            content: open-quote;
+            color: #90a4ae;
+            font-size: 2rem;
+            line-height: 0;
+            vertical-align: -.4rem;
+            margin-right: .25rem;
+        }
+        blockquote::after {
+            content: close-quote;
+            color: transparent; /* mantemos sem exibição ao final */
+        }
+
+        /* 4) Lista numerada com contador CSS */
+        .counted { counter-reset: item; list-style: none; padding-left: 0; }
+        .counted li { counter-increment: item; padding-left: 2rem; position: relative; margin: .25rem 0; }
+        .counted li::before {
+            content: counter(item) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #607d8b;
+            font-weight: 600;
+        }
+
+        /* 5) Clearfix moderno usando ::after */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .float-box { width: 120px; height: 60px; background: #e3f2fd; float: left; margin-right: .5rem; border: 1px solid #bbdefb; }
+        .container { border: 1px solid #ddd; padding: .5rem; margin: 1rem 0; }
+
+        /* 6) Campo obrigatório com asterisco usando attr() no label */
+        label.required::after {
+            content: " *";
+            color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pseudo-elementos ::before e ::after</h1>
+
+    <h2>1) Ícone antes do link</h2>
+    <p><a class="icone" href="#">Documentação</a></p>
+
+    <h2>2) Badge em botão</h2>
+    <button class="btn" data-badge="5">Notificações</button>
+
+    <h2>3) Citação com aspas automáticas</h2>
+    <blockquote>Design é como funciona.</blockquote>
+
+    <h2>4) Lista com contador personalizado</h2>
+    <ul class="counted">
+        <li>Primeiro item</li>
+        <li>Segundo item</li>
+        <li>Terceiro item</li>
+    </ul>
+
+    <h2>5) Clearfix com ::after</h2>
+    <div class="container clearfix">
+        <div class="float-box"></div>
+        <div class="float-box"></div>
+        <p>O contêiner envolve os elementos flutuantes graças ao clearfix no ::after.</p>
+    </div>
+
+    <h2>6) Campo obrigatório</h2>
+    <form>
+        <label class="required" for="email">Email</label>
+        <input id="email" type="email" placeholder="seu@email.com">
+    </form>
+</body>
+</html>

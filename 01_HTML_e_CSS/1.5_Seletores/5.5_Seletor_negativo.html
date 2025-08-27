@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Básico: aplicar estilo a todos, exceto os com a classe .primario */
+        .btn { padding: .5rem .75rem; border: 1px solid #ccc; background: #f7f7f7; margin-right: .5rem; }
+        .btn.primario { background: #005bbb; color: #fff; border-color: #005bbb; }
+        .btn:not(.primario) { color: #333; }
+
+        /* Listas: adicionar separador em todos os <li> exceto o último */
+        ul.separado { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+        ul.separado li { padding: .25rem 0; }
+        ul.separado li:not(:last-child) { border-bottom: 1px solid #e0e0e0; }
+
+        /* Formulários: estilizar todos os inputs, exceto checkbox e radio */
+        .form input:not([type="checkbox"]):not([type="radio"]) {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            padding: .4rem .5rem;
+            margin-bottom: .5rem;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+        }
+
+        /* Tags: destacar todas as tags exceto as ativas */
+        .tags { display: flex; gap: .5rem; flex-wrap: wrap; margin: .5rem 0; }
+        .tags span { padding: .25rem .5rem; border: 1px solid #ccc; border-radius: 999px; }
+        .tags span.ativo { background: #e6f3ff; border-color: #8dc6ff; color: #005bbb; }
+        .tags span:not(.ativo) { background: #fafafa; color: #555; }
+
+        /* Grade: ocultar itens que NÃO correspondem ao filtro */
+        .grid { display: grid; grid-template-columns: repeat(4, minmax(80px, 1fr)); gap: .5rem; }
+        .grid .item { padding: .75rem; background: #f5f5f5; text-align: center; border-radius: 6px; }
+        .grid.filtro-a .item:not(.a) { display: none; }
+
+        .bloco { border: 1px solid #ddd; padding: .5rem; margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <h1>Pseudo-classe negadora :not()</h1>
+
+    <div class="bloco">
+        <h2>Básico</h2>
+        <button class="btn primario">Primário</button>
+        <button class="btn">Secundário</button>
+        <button class="btn">Padrão</button>
+    </div>
+
+    <div class="bloco">
+        <h2>Lista com separador (exceto o último)</h2>
+        <ul class="separado">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+    </div>
+
+    <div class="bloco form">
+        <h2>Formulário (excluindo checkbox/radio)</h2>
+        <input type="text" placeholder="Texto">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Senha">
+        <label><input type="checkbox"> Aceito os termos</label>
+        <label><input type="radio" name="op"> Opção A</label>
+    </div>
+
+    <div class="bloco">
+        <h2>Tags (exceto ativas)</h2>
+        <div class="tags">
+            <span class="ativo">HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+            <span class="ativo">React</span>
+        </div>
+    </div>
+
+    <div class="bloco">
+        <h2>Filtro de grade com :not()</h2>
+        <div class="grid filtro-a">
+            <div class="item a">A1</div>
+            <div class="item b">B1</div>
+            <div class="item a">A2</div>
+            <div class="item c">C1</div>
+            <div class="item a">A3</div>
+            <div class="item b">B2</div>
+            <div class="item c">C2</div>
+            <div class="item a">A4</div>
+        </div>
+        <p>Neste exemplo, quando o contêiner tem a classe <code>filtro-a</code>, os itens que <strong>não</strong> têm a classe <code>.a</code> são ocultados.</p>
+    </div>
+</body>
+</html>

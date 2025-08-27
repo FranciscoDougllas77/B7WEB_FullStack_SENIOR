@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul.demo, ol.demo {
+            margin: 0 0 1rem 1.25rem;
+        }
+
+        /* Primeiro e último filho de qualquer tipo */
+        .grupo > *:first-child { outline: 2px solid #1e90ff; }
+        .grupo > *:last-child { outline: 2px solid #ff8c00; }
+
+        /* Primeiro/último do mesmo tipo */
+        .misto p:first-of-type { background: #e8f4ff; }
+        .misto p:last-of-type { background: #fff4e6; }
+        .misto h3:first-of-type { color: #0a4; }
+        .misto h3:last-of-type { color: #b22222; }
+
+        /* Listas: destacar itens extremos */
+        ul.demo li:first-child { font-weight: 700; color: #005bbb; }
+        ul.demo li:last-child { color: #b22222; }
+
+        /* Somente filho / somente do tipo */
+        .apenas .caixa:only-child { border: 2px dashed #8a2be2; }
+        .apenas p:only-of-type { background: #f0e6ff; }
+
+        .grupo, .misto, .apenas { padding: .5rem; border: 1px solid #ddd; margin-bottom: 1rem; }
+        .caixa { padding: .25rem .5rem; background: #f7f7f7; margin: .25rem 0; }
+    </style>
+</head>
+<body>
+    <h1>Pseudo-classes de primeiro e último elemento</h1>
+
+    <h2>:first-child e :last-child</h2>
+    <div class="grupo">
+        <div class="caixa">Div 1</div>
+        <p class="caixa">Parágrafo 2</p>
+        <span class="caixa">Span 3</span>
+        <button class="caixa">Botão 4</button>
+    </div>
+    <p>Em cima: o primeiro filho recebe contorno azul; o último, laranja.</p>
+
+    <h2>:first-of-type e :last-of-type</h2>
+    <div class="misto">
+        <h3 class="caixa">Título A</h3>
+        <p class="caixa">Texto 1</p>
+        <p class="caixa">Texto 2</p>
+        <h3 class="caixa">Título B</h3>
+        <p class="caixa">Texto 3</p>
+    </div>
+    <p>O primeiro e o último <code>p</code> ganham fundos diferentes; o primeiro e o último <code>h3</code> mudam de cor.</p>
+
+    <h2>Listas</h2>
+    <ul class="demo">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+    </ul>
+
+    <h2>:only-child e :only-of-type</h2>
+    <div class="apenas">
+        <div class="caixa">Sou único filho</div>
+    </div>
+    <div class="apenas">
+        <p class="caixa">Sou o único parágrafo entre spans</p>
+        <span class="caixa">Span A</span>
+        <span class="caixa">Span B</span>
+    </div>
+</body>
+</html>

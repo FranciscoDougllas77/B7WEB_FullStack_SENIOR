@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./3.8_tarefas.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Tarefas</h1>
+    <div class="input-group">
+        <input type="text" id="novaTarefa" placeholder="Adicione uma nova tarefa...">
+        <button id="adicionarTarefa">+</button>
+    </div>
+    <ul id="listaTarefas"></ul>
+</div>
+
+
+
+<script>
+    const inputTarefa = document.getElementById('novaTarefa');
+    const btnAdicionar = document.getElementById('adicionarTarefa');
+    const listaTarefas = document.getElementById('listaTarefas');
+
+    // Carregar tarefas do localStorage
+    let tarefas = JSON.parse(localStorage.getItem('tarefasModernas')) || [];
+
+    function salvarTarefas() {
+        localStorage.setItem('tarefasModernas', JSON.stringify(tarefas));
+    }
+
+    function renderizarTarefas() {
+        listaTarefas.innerHTML = '';
+        if (tarefas.length === 0) {
+            listaTarefas.innerHTML = '<li style="text-align:center; color:#b0b0b0; padding:18px 0;">Nenhuma tarefa ainda.</li>';
+            return;
+        }
+        tarefas.forEach((tarefa, idx) => {
+            const li = document.createElement('li');
+            li.className = 'tarefa' + (tarefa.concluida ? ' concluida' : '');
+            li.innerHTML = `
+                <span style="flex:1; cursor:pointer;" title="Clique para marcar como concluída">${tarefa.texto}</span>
+                <div class="acoes">
+                    <button class="btn-acao btn-editar" title="Editar">&#9998;</button>
+                    <button class="btn-acao btn-remover" title="Remover">&#10006;</button>
+                </div>
+            `;
+            // Marcar como concluída ao clicar no texto
+            li.querySelector('span').addEventListener('click', () => {
+                tarefas[idx].concluida = !tarefas[idx].concluida;
+                salvarTarefas();
+                renderizarTarefas();
+            });
+            // Remover tarefa
+            li.querySelector('.btn-remover').addEventListener('click', () => {
+                if (confirm('Tem certeza que deseja remover esta tarefa?')) {
+                    tarefas.splice(idx, 1);
+                    salvarTarefas();
+                    renderizarTarefas();
+                }
+            });
+            // Editar tarefa
+            li.querySelector('.btn-editar').addEventListener('click', () => {
+                const novoTexto = prompt('Editar tarefa:', tarefa.texto);
+                if (novoTexto !== null && novoTexto.trim() !== '') {
+                    tarefas[idx].texto = novoTexto.trim();
+                    salvarTarefas();
+                    renderizarTarefas();
+                }
+            });
+            listaTarefas.appendChild(li);
+        });
+    }
+
+    function adicionarTarefa() {
+        const texto = inputTarefa.value.trim();
+        if (texto === '') {
+            inputTarefa.focus();
+            return;
+        }
+        tarefas.push({ texto, concluida: false });
+        salvarTarefas();
+        renderizarTarefas();
+        inputTarefa.value = '';
+        inputTarefa.focus();
+    }
+
+    btnAdicionar.addEventListener('click', adicionarTarefa);
+    inputTarefa.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            adicionarTarefa();
+        }
+    });
+
+    // Renderizar ao carregar
+    renderizarTarefas();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplo: Manipulando CSS Inline com o DOM
+
+        O DOM permite alterar estilos CSS diretamente nos elementos HTML usando a propriedade style.
+        Isso é útil para mudar cores, tamanhos, margens, exibir/ocultar elementos, etc., de forma dinâmica.
+    -->
+
+    <h1 id="titulo">Manipulando CSS Inline com JavaScript</h1>
+    <p id="paragrafo">Este parágrafo terá seu estilo alterado via DOM.</p>
+    <button id="botaoEstilo">Alterar Estilo</button>
+    <button id="botaoResetar">Resetar Estilo</button>
+
+    <script>
+        // Selecionando os elementos
+        const titulo = document.getElementById('titulo');
+        const paragrafo = document.getElementById('paragrafo');
+        const botaoEstilo = document.getElementById('botaoEstilo');
+        const botaoResetar = document.getElementById('botaoResetar');
+
+        // Função para alterar o estilo do parágrafo
+        botaoEstilo.addEventListener('click', function() {
+            // Alterando propriedades CSS diretamente
+            paragrafo.style.color = 'white';
+            paragrafo.style.backgroundColor = 'blue';
+            paragrafo.style.fontSize = '1.5rem';
+            paragrafo.style.padding = '15px';
+            paragrafo.style.borderRadius = '8px';
+            paragrafo.style.boxShadow = '2px 2px 8px rgba(0,0,0,0.2)';
+            titulo.style.color = 'green';
+            titulo.style.textTransform = 'uppercase';
+        });
+
+        // Função para resetar o estilo do parágrafo
+        botaoResetar.addEventListener('click', function() {
+            // Removendo os estilos inline (voltando ao padrão)
+            paragrafo.style.color = '';
+            paragrafo.style.backgroundColor = '';
+            paragrafo.style.fontSize = '';
+            paragrafo.style.padding = '';
+            paragrafo.style.borderRadius = '';
+            paragrafo.style.boxShadow = '';
+            titulo.style.color = '';
+            titulo.style.textTransform = '';
+        });
+    </script>
+
+    <!-- 
+        Resumo:
+        - Usamos .style.propriedade para alterar estilos CSS diretamente pelo JavaScript.
+        - Para remover um estilo inline, basta atribuir uma string vazia.
+        - Isso permite criar interatividade e personalização visual de forma dinâmica.
+    -->
+</body>
+</html>

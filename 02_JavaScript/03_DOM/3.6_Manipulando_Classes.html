@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        Exemplo: Manipulando Classes com o DOM
+
+        O DOM permite adicionar, remover, alternar (toggle) e verificar classes em elementos HTML usando a propriedade classList.
+        Isso é útil para alterar estilos dinamicamente, criar interatividade e controlar o visual dos elementos.
+    -->
+
+    <h1 id="titulo">Manipulando Classes com JavaScript</h1>
+    <p id="paragrafo" class="destaque">Este parágrafo começa com a classe <strong>destaque</strong>.</p>
+
+    <button id="btnAdicionar">Adicionar Classe</button>
+    <button id="btnRemover">Remover Classe</button>
+    <button id="btnAlternar">Alternar Classe</button>
+    <button id="btnVerificar">Verificar Classe</button>
+
+    <p id="mensagem"></p>
+
+    <style>
+        .destaque {
+            background-color: yellow;
+            color: #333;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        #mensagem {
+            margin-top: 15px;
+            font-style: italic;
+            color: #0077cc;
+        }
+    </style>
+
+    <script>
+        // Selecionando os elementos
+        const paragrafo = document.getElementById('paragrafo');
+        const btnAdicionar = document.getElementById('btnAdicionar');
+        const btnRemover = document.getElementById('btnRemover');
+        const btnAlternar = document.getElementById('btnAlternar');
+        const btnVerificar = document.getElementById('btnVerificar');
+        const mensagem = document.getElementById('mensagem');
+
+        // Adiciona a classe 'destaque' ao parágrafo
+        btnAdicionar.addEventListener('click', function() {
+            paragrafo.classList.add('destaque');
+            mensagem.innerText = "Classe 'destaque' adicionada!";
+        });
+
+        // Remove a classe 'destaque' do parágrafo
+        btnRemover.addEventListener('click', function() {
+            paragrafo.classList.remove('destaque');
+            mensagem.innerText = "Classe 'destaque' removida!";
+        });
+
+        // Alterna (adiciona/remove) a classe 'destaque'
+        btnAlternar.addEventListener('click', function() {
+            paragrafo.classList.toggle('destaque');
+            if (paragrafo.classList.contains('destaque')) {
+                mensagem.innerText = "Classe 'destaque' está ativa!";
+            } else {
+                mensagem.innerText = "Classe 'destaque' foi removida!";
+            }
+        });
+
+        // Verifica se o parágrafo possui a classe 'destaque'
+        btnVerificar.addEventListener('click', function() {
+            if (paragrafo.classList.contains('destaque')) {
+                mensagem.innerText = "O parágrafo possui a classe 'destaque'.";
+            } else {
+                mensagem.innerText = "O parágrafo NÃO possui a classe 'destaque'.";
+            }
+        });
+    </script>
+</body>
+</html>

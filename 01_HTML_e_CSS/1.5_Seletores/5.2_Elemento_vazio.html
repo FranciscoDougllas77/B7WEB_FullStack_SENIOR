@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p:empty {
+            outline: 2px dashed crimson;
+            min-height: 1.5rem;
+            background: #fff0f0;
+        }
+
+        .caixa {
+            border: 1px solid #ccc;
+            padding: .5rem;
+            min-height: 2rem;
+            margin-bottom: .5rem;
+        }
+        .caixa:empty::before {
+            content: "Sem conteúdo ainda…";
+            color: #666;
+            font-style: italic;
+        }
+
+        ul li:empty {
+            display: none;
+        }
+
+        div:empty {
+            border: 2px solid green;
+            height: 20px;
+            margin-bottom: .5rem;
+        }
+
+        section:empty {
+            background: #eef;
+            padding: 8px;
+        }
+
+        .cartao:not(:empty) {
+            box-shadow: 0 0 0 2px #0a0;
+            padding: .5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seletor :empty (elemento vazio)</h1>
+
+    <h2>Parágrafo vazio</h2>
+    <p></p>
+    <p>Com conteúdo</p>
+
+    <h2>Mensagem automática em elemento vazio</h2>
+    <div class="caixa"></div>
+    <div class="caixa">Agora tem conteúdo</div>
+
+    <h2>Ocultar itens de lista vazios</h2>
+    <ul>
+        <li>Item 1</li>
+        <li></li>
+        <li>Item 3</li>
+    </ul>
+
+    <h2>Atenção ao espaço em branco</h2>
+    <div></div>
+    <div> </div>
+    <div>
+    </div>
+
+    <h2>Comentários não impedem :empty</h2>
+    <section><!-- comentário --></section>
+
+    <h2>Oposto com :not(:empty)</h2>
+    <div class="cartao"></div>
+    <div class="cartao">Preenchido</div>
+</body>
+</html>

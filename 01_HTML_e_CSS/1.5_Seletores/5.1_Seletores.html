@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Seleciona todos os inputs */
+        input {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        /* Seleciona todos os elementos que possuem o atributo 'type' */
+        input[type] {
+            border: 2px solid #ccc;
+        }
+
+        /* Seleciona apenas os inputs do tipo 'email' */
+        input[type="email"] {
+            border: 2px solid blue;
+            background: #e6f0ff;
+        }
+
+        /* Seleciona todos os links que começam com 'mailto:' */
+        a[href^="mailto:"] {
+            color: green;
+            font-weight: bold;
+        }
+
+        /* Seleciona todos os links que terminam com '.com' */
+        a[href$=".com"] {
+            text-decoration: underline;
+        }
+
+        /* Seleciona todos os links que possuem 'google' em qualquer parte do href */
+        a[href*="google"] {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Seletores por atributo em CSS permitem selecionar elementos HTML com base em atributos e seus valores.
+        Eles são muito úteis para aplicar estilos específicos a elementos que possuem determinados atributos.
+    -->
+
+    <h2>Seletores por Atributo</h2>
+
+    <p>Os seletores por atributo permitem selecionar elementos HTML que possuem um atributo específico ou um valor específico para esse atributo.</p>
+
+    <ul>
+        <li><strong>[atributo]</strong>: Seleciona elementos que possuem o atributo, independente do valor.</li>
+        <li><strong>[atributo="valor"]</strong>: Seleciona elementos cujo atributo tem exatamente o valor especificado.</li>
+        <li><strong>[atributo^="valor"]</strong>: Seleciona elementos cujo atributo começa com o valor especificado.</li>
+        <li><strong>[atributo$="valor"]</strong>: Seleciona elementos cujo atributo termina com o valor especificado.</li>
+        <li><strong>[atributo*="valor"]</strong>: Seleciona elementos cujo atributo contém o valor especificado.</li>
+    </ul>
+
+    <h3>Exemplo prático:</h3>
+
+    <input type="text" placeholder="Nome">
+    <input type="email" placeholder="E-mail">
+    <input type="password" placeholder="Senha">
+    <input type="submit" value="Enviar">
+
+    <a href="https://www.google.com">Google</a>
+    <a href="mailto:teste@email.com">Enviar Email</a>
+    <a href="https://www.exemplo.com">Exemplo</a>
+    <a href="tel:+5511999999999">Ligar</a>
+
+    
+
+    <p>
+        <strong>Explicação:</strong><br>
+        - <code>input[type="email"]</code>: Aplica estilo apenas ao campo de e-mail.<br>
+        - <code>a[href^="mailto:"]</code>: Aplica estilo aos links de e-mail.<br>
+        - <code>a[href$=".com"]</code>: Aplica estilo aos links que terminam com ".com".<br>
+        - <code>a[href*="google"]</code>: Aplica estilo aos links que contêm "google" no endereço.<br>
+    </p>
+</body>
+</html>
