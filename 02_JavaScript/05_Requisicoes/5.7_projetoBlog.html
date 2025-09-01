@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        fieldset{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: #f0f0f0;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Fake de Testes</h1>
+
+    <fieldset>
+        <legend>Inserir um novo Post</legend>
+
+        <div>
+            <input type="text" id="titleField" placeholder="Titulo do Post">
+        </div>
+
+        <div>
+            <textarea name="" id="bodyField" placeholder="Conteúdo do Post"></textarea>
+        </div>
+
+        <div>
+            <button id="insertButton">Inserir Post</button>
+        </div>
+    </fieldset>
+
+    <div class="posts"></div>
+
+
+    <script src="5.7_blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    background: #333;
+    padding: 20px;
+    box-shadow: 0 0 10px;
+
+    nav{
+        display: flex;
+        padding: 20px;
+
+        ul{
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+
+            li{
+                padding: 20px;
+                background: #555;
+                box-shadow: 0 0 10px;
+                border-radius: 20px;
+                list-style: none;
+
+                a{
+                    color: #fff;
+                    font-size: 1.3rem;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+
+%fundamentos-msg{
+    padding: 10px;
+    font-size: 1.3rem;
+    border: 2px solid #555;
+    margin: auto;
+    max-width: 500px;
+    margin-top: 10px;
+}
+
+.msg-info{
+    @extend %fundamentos-msg;
+    border-color: blue;
+    color: #0000ff;
+}
+
+.msg-aviso{
+    @extend %fundamentos-msg;
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.msg-sucesso{
+    @extend %fundamentos-msg;
+    border-color: #00ff00;
+    color: #0000ff;
+}
+
+//Operacoes Matematicas
+%item{
+    background-color: #444;
+    height: 40px;
+    margin: 20px
+}
+$item-width: 100px;
+
+.item{
+    @extend %item;
+    width: 100px;
+}
+
+.item-duplo{
+    @extend %item;
+    width: $item-width * 3;
+}

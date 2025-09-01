@@ -1,0 +1,50 @@
+//Variaveis em SASS
+$cor-header: #333;
+$cor-container: #b1d5eb;
+$cor-nav: rgb(234, 182, 85);
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    background: $cor-header;
+    color: #fff;
+
+    nav{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            li{
+                list-style: none;
+                a{
+                    color: #fff;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    text-align: center;
+                    padding: 10px;
+                    &:hover{
+                        background-color: red;
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
